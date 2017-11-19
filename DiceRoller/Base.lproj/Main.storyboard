@@ -55,17 +55,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="55"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uk7-eN-OOc">
-                                                <rect key="frame" x="0.0" y="0.0" width="285" height="55"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="285" id="7Mj-yI-uP5"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="0.0" width="288" height="55"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LmK-3c-nw3">
-                                                <rect key="frame" x="286" y="0.0" width="57" height="55"/>
+                                                <rect key="frame" x="288" y="0.0" width="55" height="55"/>
                                                 <color key="backgroundColor" red="0.11372549019607843" green="0.11764705882352941" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="55" id="s77-8G-1aa"/>
+                                                </constraints>
                                                 <state key="normal" title="Settings">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </state>

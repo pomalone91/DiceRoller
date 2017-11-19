@@ -381,11 +381,11 @@ class RollViewController: UIViewController {
     func roundButtons() {
         for i in 0...buttonText.count - 1 {
             buttonText[i].layer.cornerRadius = 15
-            subtractDieLabel[i].layer.cornerRadius = 10
-            addDieLabel[i].layer.cornerRadius = 10
-            subtractModifierLabel[i].layer.cornerRadius = 10
-            addModifierLabel[i].layer.cornerRadius = 10
-            settingsOutlet.layer.cornerRadius = 10
+            subtractDieLabel[i].layer.cornerRadius = 25
+            addDieLabel[i].layer.cornerRadius = 25
+            subtractModifierLabel[i].layer.cornerRadius = 25
+            addModifierLabel[i].layer.cornerRadius = 25
+            settingsOutlet.layer.cornerRadius = 25
         }
         
         clearLabel.layer.cornerRadius = 20

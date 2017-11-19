@@ -8,26 +8,33 @@
 
 import Foundation
 
-//  The types of possible dice to be rolled
+/*** The types of possible dice to be rolled ***/
 enum DieType {
     case d4, d6, d8, d10, d12, d20, d100
 }
 
-//  Structure defining components of dice, such as the total number of dice to be rolled, the type of dice to be rolled and the modifier added to the sum of the rolls
+/*** Structure defining components of dice, such as the total number of dice to be rolled.
+ *** The type of dice to be rolled and the modifier added to the sum of the rolls ***/
 struct Die {
     var type: DieType = .d4
     var totalDice: Int = 1
     var modifier: Int = 0
     
-    //  Add or remove 1 dice when button is tapped
+    /*** Add or remove 1 dice when button is tapped
+     *** If the number of die exceeds the maximum of 99, it resets to 1
+     *** If the total number of die is 1 and one is subtracted, it resets to the max, 99, 
+     ***/
     mutating func addDie() {
         self.totalDice += 1
         print(self.totalDice)
+        if totalDice > 99 {
+            totalDice = 1
+        }
     }
     mutating func removeDie() {
         self.totalDice -= 1
         if totalDice < 1 {
-            totalDice = 1
+            totalDice = 99
         }
         print(self.totalDice)
     }
@@ -35,12 +42,25 @@ struct Die {
     //  Add or subtract 1 from the modifier value to the roll
     mutating func addModifier() {
         self.modifier += 1
+        if modifier > 99 {
+            self.modifier = -99
+        }
         print("modifier is: \(self.modifier)")
     }
     mutating func removeModifier() {
         self.modifier -= 1
+        if modifier < -99 {
+            self.modifier = 99
+        }
         print("modifieris: \(self.modifier)")
     }
+    
+    // Function to reset modifiers and total dice
+    mutating func resetDie() {
+        self.modifier = 0
+        self.totalDice = 1
+    }
+
     
     //  Function to handle rolling the dice
     func rollDie() -> Int {

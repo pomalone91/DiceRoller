@@ -27,6 +27,11 @@ class RollViewController: UIViewController {
     var timer = Timer()
     let timerInterval = 0.3
     
+    // Array of strings to hold items to add to the log.
+    // Whatever is in the array will be appended to an array in the LogViewController to be displayed.
+    // When this view willAppear, the array in this view controller will be cleared out so the same stuff isn't appended more than once
+    var rollsToLog: [String] = []
+    
     //  Outlet for result label
     @IBOutlet weak var resultLabel: UILabel!
    
@@ -40,6 +45,7 @@ class RollViewController: UIViewController {
     @IBOutlet var addModifierLabel: [UIButton]!
     @IBOutlet weak var clearLabel: UIButton!
     @IBOutlet weak var settingsOutlet: UIButton!
+    @IBOutlet weak var logOutlet: UIButton!
     
     
     // Release button to end timer
@@ -50,6 +56,7 @@ class RollViewController: UIViewController {
     
     // Press down on remove dice button
     @IBAction func removeDiceDown(_ sender: UIButton) {
+        timer.invalidate()
         removeDice(senderTag: sender.tag)
         timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: {_ in self.removeDice(senderTag: sender.tag)})
     }
@@ -116,6 +123,7 @@ class RollViewController: UIViewController {
     
     // Press and hold to add dice continuously
     @IBAction func addDiceDown(_ sender: UIButton) {
+        timer.invalidate()
         addDice(senderTag: sender.tag)
         timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: {_ in self.addDice(senderTag: sender.tag)})
     }
@@ -183,6 +191,7 @@ class RollViewController: UIViewController {
     
     //  Action for subtracting modifier
     @IBAction func removeModifierDown(_ sender: UIButton) {
+        timer.invalidate()
         subtractModifier(senderTag: sender.tag)
         timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: {_ in self.subtractModifier(senderTag: sender.tag)})
     }
@@ -249,6 +258,7 @@ class RollViewController: UIViewController {
     
     //  Action for adding modifier
     @IBAction func addModifierDown(_ sender: UIButton) {
+        timer.invalidate()
         addModifier(senderTag: sender.tag)
         timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: {_ in self.addModifier(senderTag: sender.tag)})
     }
@@ -286,10 +296,13 @@ class RollViewController: UIViewController {
         modifierToAdd.addModifier()
         
         // Update the button label, use sender.tag for the array index
+        // Also append the result of the roll to rollsToLog
         if modifierToAdd.modifier < 0 {
             buttonText[senderTag].setTitle("\(modifierToAdd.totalDice)\(modifierToAdd.type)\(modifierToAdd.modifier)", for: .normal)
+            
         } else {
             buttonText[senderTag].setTitle("\(modifierToAdd.totalDice)\(modifierToAdd.type)+\(modifierToAdd.modifier)", for: .normal)
+            
         }
         
         // Update the actual die instance so every thing is up to date next time this is called.
@@ -320,25 +333,25 @@ class RollViewController: UIViewController {
         switch sender.tag {
         case 0:
             dieToRoll = dice[0]
-            print("Rolled d4")
+            print("Tapped d4")
         case 1:
             dieToRoll = dice[1]
-            print("Rolled d6")
+            print("Tapped d6")
         case 2:
             dieToRoll = dice[2]
-            print("Rolled d8")
+            print("Tapped d8")
         case 3:
             dieToRoll = dice[3]
-            print("Rolled d10")
+            print("Tapped d10")
         case 4:
             dieToRoll = dice[4]
-            print("Rolled d12")
+            print("Tapped d12")
         case 5:
             dieToRoll = dice[5]
-            print("Rolled d20")
+            print("Tapped d20")
         case 6:
             dieToRoll = dice[6]
-            print("Rolled d100")
+            print("Tapped d100")
         default:
             print("Error, invalid dice tag")
         }
@@ -346,11 +359,16 @@ class RollViewController: UIViewController {
         // Update the results label
         resultLabel.text = "\(dieToRoll.rollDie())"
         
+        // Check that the resultLabel.text has something in it, and then use that to log the rolls.
+        guard let resultString = resultLabel.text else { return }
+        
         // Update the title on the button
         if dieToRoll.modifier < 0 {
             sender.setTitle("\(dieToRoll.totalDice)\(dieToRoll.type)\(dieToRoll.modifier)", for: .normal)
+            rollsToLog.append("\n\(dieToRoll.totalDice)\(dieToRoll.type)\(dieToRoll.modifier) = \(resultString)\n")
         } else {
             sender.setTitle("\(dieToRoll.totalDice)\(dieToRoll.type)+\(dieToRoll.modifier)", for: .normal)
+            rollsToLog.append("\n\(dieToRoll.totalDice)\(dieToRoll.type)+\(dieToRoll.modifier) = \(resultString)\n")
         }
         
     }
@@ -375,6 +393,8 @@ class RollViewController: UIViewController {
             buttonText[i].setTitle("\(dice[i].totalDice)\(dice[i].type)+\(dice[i].modifier)", for: .normal)
             i += 1
         }
+        
+        print(rollsToLog)
     }
     
     // Function to make buttons rounded
@@ -386,9 +406,22 @@ class RollViewController: UIViewController {
             subtractModifierLabel[i].layer.cornerRadius = 25
             addModifierLabel[i].layer.cornerRadius = 25
             settingsOutlet.layer.cornerRadius = 25
+            logOutlet.layer.cornerRadius = 25
         }
         
         clearLabel.layer.cornerRadius = 20
+    }
+    
+    // TODO function to append the results of a roll and a timestamp into an array of log objects
+    // The function should be called every time a roll button is pressed.
+    
+    // Function to pass log item to LogViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LogSegue" {
+            let logViewController = segue.destination as! LogViewController
+            logViewController.rollLog = rollsToLog
+            //logViewController.rollLog.append(rollsToLog)
+        }
     }
     
     // Stuff to hide the navigation bar
@@ -401,6 +434,9 @@ class RollViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // Invalidate any timers that might still be going
+        timer.invalidate()
         
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)

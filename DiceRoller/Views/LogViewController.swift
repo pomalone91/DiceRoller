@@ -1,20 +1,36 @@
 //
-//  SettingsViewController.swift
+//  LogViewController.swift
 //  DiceRoller
 //
-//  Created by Paul Malone on 11/8/17.
+//  Created by Paul Malone on 11/19/17.
 //  Copyright © 2017 stroggi. All rights reserved.
 //
 
 import UIKit
 
-class SettingsViewController: UIViewController {
-
+class LogViewController: UIViewController {
+    
+    var rollLog: [String] = []
+    
+    @IBOutlet weak var logLabel: UILabel!
+    
+    func updateLog() {
+        for item in rollLog {
+            logLabel.text?.append(item)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print(rollLog)
+        
+        updateLog()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        rollLog.removeAll()
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

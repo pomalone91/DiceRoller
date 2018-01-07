@@ -85,7 +85,6 @@ struct Die {
         print("Rolled \(totalDice)\(type) + \(modifier)")
         
         //  Use upperBound determined from switch statement to set the max possible value created using arc4random_uniform()
-        //  Could probably do this with some kind of loop
         var rollValue = UInt32()
         var i = totalDice
         while i > 0 {

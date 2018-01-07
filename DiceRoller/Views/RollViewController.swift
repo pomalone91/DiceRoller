@@ -30,7 +30,7 @@ class RollViewController: UIViewController {
     // Array of strings to hold items to add to the log.
     // Whatever is in the array will be appended to an array in the LogViewController to be displayed.
     // When this view willAppear, the array in this view controller will be cleared out so the same stuff isn't appended more than once
-    var rollsToLog: [String] = []
+    var rollsToLog: [Log] = []
     
     //  Outlet for result label
     @IBOutlet weak var resultLabel: UILabel!
@@ -357,18 +357,18 @@ class RollViewController: UIViewController {
         }
         
         // Update the results label
-        resultLabel.text = "\(dieToRoll.rollDie())"
-        
-        // Check that the resultLabel.text has something in it, and then use that to log the rolls.
-        guard let resultString = resultLabel.text else { return }
+        let resultValue = dieToRoll.rollDie()
+        resultLabel.text = "\(resultValue)"
         
         // Update the title on the button
         if dieToRoll.modifier < 0 {
             sender.setTitle("\(dieToRoll.totalDice)\(dieToRoll.type)\(dieToRoll.modifier)", for: .normal)
-            rollsToLog.append("\n\(dieToRoll.totalDice)\(dieToRoll.type)\(dieToRoll.modifier) = \(resultString)\n")
+            let newLogItem = Log(roll: "\(dieToRoll.totalDice)\(dieToRoll.type)\(dieToRoll.modifier)", result: resultValue)
+            rollsToLog.append(newLogItem)
         } else {
             sender.setTitle("\(dieToRoll.totalDice)\(dieToRoll.type)+\(dieToRoll.modifier)", for: .normal)
-            rollsToLog.append("\n\(dieToRoll.totalDice)\(dieToRoll.type)+\(dieToRoll.modifier) = \(resultString)\n")
+            let newLogItem = Log(roll: "\(dieToRoll.totalDice)\(dieToRoll.type)+\(dieToRoll.modifier)", result: resultValue)
+            rollsToLog.append(newLogItem)
         }
         
     }
@@ -418,8 +418,8 @@ class RollViewController: UIViewController {
     // Function to pass log item to LogViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LogSegue" {
-            let logViewController = segue.destination as! LogViewController
-            logViewController.rollLog = rollsToLog
+            let logTableViewController = segue.destination as! LogTableViewController
+            logTableViewController.rollLog = rollsToLog
             //logViewController.rollLog.append(rollsToLog)
         }
     }

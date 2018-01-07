@@ -15,6 +15,9 @@
 		2552FCC41FC1F690009E7E1D /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2552FCC31FC1F690009E7E1D /* LogViewController.swift */; };
 		25852E321FB3D18A000C1EE7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */; };
 		25A01FFB1FC4BBFB007121D0 /* SettingsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A01FFA1FC4BBFB007121D0 /* SettingsStructure.swift */; };
+		25AF597520015ECE00AD920C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF597420015ECE00AD920C /* Log.swift */; };
+		25AF597720015FA800AD920C /* LogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF597620015FA800AD920C /* LogTableViewController.swift */; };
+		25AF597920015FF600AD920C /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF597820015FF600AD920C /* LogTableViewCell.swift */; };
 		25BD564A1F3FA77700D63EF4 /* DieStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BD56491F3FA77700D63EF4 /* DieStructure.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +32,9 @@
 		2552FCC31FC1F690009E7E1D /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		25A01FFA1FC4BBFB007121D0 /* SettingsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStructure.swift; sourceTree = "<group>"; };
+		25AF597420015ECE00AD920C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = DiceRoller/Model/Log.swift; sourceTree = SOURCE_ROOT; };
+		25AF597620015FA800AD920C /* LogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewController.swift; sourceTree = "<group>"; };
+		25AF597820015FF600AD920C /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
 		25BD56491F3FA77700D63EF4 /* DieStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieStructure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +68,7 @@
 		25243F2C1F3EA1FB00DD5E29 /* DiceRoller */ = {
 			isa = PBXGroup;
 			children = (
+				25243F2D1F3EA1FB00DD5E29 /* AppDelegate.swift */,
 				2526824B1FCA045E006B319B /* Views */,
 				2526824A1FCA0455006B319B /* Model */,
 				25243F311F3EA1FB00DD5E29 /* Main.storyboard */,
@@ -75,7 +82,7 @@
 		2526824A1FCA0455006B319B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				25243F2D1F3EA1FB00DD5E29 /* AppDelegate.swift */,
+				25AF597420015ECE00AD920C /* Log.swift */,
 				25A01FFA1FC4BBFB007121D0 /* SettingsStructure.swift */,
 				25BD56491F3FA77700D63EF4 /* DieStructure.swift */,
 			);
@@ -85,6 +92,8 @@
 		2526824B1FCA045E006B319B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				25AF597820015FF600AD920C /* LogTableViewCell.swift */,
+				25AF597620015FA800AD920C /* LogTableViewController.swift */,
 				25243F2F1F3EA1FB00DD5E29 /* RollViewController.swift */,
 				25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */,
 				2552FCC31FC1F690009E7E1D /* LogViewController.swift */,
@@ -166,7 +175,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25AF597920015FF600AD920C /* LogTableViewCell.swift in Sources */,
+				25AF597720015FA800AD920C /* LogTableViewController.swift in Sources */,
 				25A01FFB1FC4BBFB007121D0 /* SettingsStructure.swift in Sources */,
+				25AF597520015ECE00AD920C /* Log.swift in Sources */,
 				25243F301F3EA1FB00DD5E29 /* RollViewController.swift in Sources */,
 				2552FCC41FC1F690009E7E1D /* LogViewController.swift in Sources */,
 				25243F2E1F3EA1FB00DD5E29 /* AppDelegate.swift in Sources */,

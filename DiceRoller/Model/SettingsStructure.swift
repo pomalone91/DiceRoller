@@ -15,19 +15,31 @@ import Foundation
 import UIKit
 
 struct ColorPalette {
+    // Default color scheme
     var backGroundColor: UIColor
-    var dieButtonColor: UIColor
-    var modifierButtonColor: UIColor
-    var resultLabelColor: UIColor
-    var clearButtonColor: UIColor
-    var rollDieButtonColor: UIColor
+    var buttonColor1: UIColor
+    var buttonColor2: UIColor
+    var buttonColor3: UIColor
+    var buttonColor4: UIColor
+    var labelColor1: UIColor
     
-    init(backGroundColor: UIColor, dieButtonColor: UIColor, modifierButtonColor: UIColor, resultLabelColor: UIColor, clearButtonColor: UIColor, rollDieButtonColor: UIColor) {
+    // Manual init
+    init(backGroundColor: UIColor, buttonColor1: UIColor, buttonColor2: UIColor, buttonColor3: UIColor, buttonColor4: UIColor, labelColor1: UIColor) {
         self.backGroundColor = backGroundColor
-        self.dieButtonColor = dieButtonColor
-        self.modifierButtonColor = modifierButtonColor
-        self.resultLabelColor = resultLabelColor
-        self.clearButtonColor = clearButtonColor
-        self.rollDieButtonColor = rollDieButtonColor
+        self.buttonColor1 = buttonColor1
+        self.buttonColor2 = buttonColor2
+        self.buttonColor3 = buttonColor3
+        self.buttonColor4 = buttonColor4
+        self.labelColor1 = labelColor1
+    }
+    
+    // Default init
+    init() {
+        self.backGroundColor = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
+        self.buttonColor1 = UIColor(displayP3Red: 73/255, green: 97/255, blue: 101/255, alpha: 1)
+        self.buttonColor2 = UIColor(displayP3Red: 29/255, green: 30/255, blue: 31/255, alpha: 1)
+        self.buttonColor3 = UIColor(displayP3Red: 89/255, green: 74/255, blue: 57/255, alpha: 1)
+        self.buttonColor4 = UIColor(displayP3Red: 128/255, green: 0/255, blue: 0/255, alpha: 1)
+        self.labelColor1 = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
     }
 }

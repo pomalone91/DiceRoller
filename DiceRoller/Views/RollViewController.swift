@@ -14,6 +14,8 @@ import UIKit
 
 class RollViewController: UIViewController {
     
+    // Create color pallette object
+    
     //  Create the dice
     var dice = [Die(type: .d4, totalDice: 1 , modifier: 0),
                Die(type: .d6, totalDice: 1 , modifier: 0),
@@ -32,6 +34,9 @@ class RollViewController: UIViewController {
     // When this view willAppear, the array in this view controller will be cleared out so the same stuff isn't appended more than once
     var rollsToLog: [Log] = []
     
+    // ColorScheme object to hold the main color scheme
+    var colorScheme = ColorPalette()
+    
     //  Outlet for result label
     @IBOutlet weak var resultLabel: UILabel!
    
@@ -47,6 +52,14 @@ class RollViewController: UIViewController {
     @IBOutlet weak var settingsOutlet: UIButton!
     @IBOutlet weak var logOutlet: UIButton!
     
+    // Function to update all of the labels
+    func updateLabels(_ senderTag: Int, _ die: Die) {
+        if die.modifier < 0 {
+            buttonText[senderTag].setTitle("\(die.totalDice)\(die.type)\(die.modifier)", for: .normal)
+        } else {
+            buttonText[senderTag].setTitle("\(die.totalDice)\(die.type)+\(die.modifier)", for: .normal)
+        }
+    }
     
     // Release button to end timer
     // This action is connected to touch up outside/inside for each button
@@ -63,62 +76,15 @@ class RollViewController: UIViewController {
     
     // Function to remove dice
     func removeDice(senderTag: Int) {
-        var dieToRemove = Die()
-        
-        // Figure out which dice to remove from
-        switch senderTag {
-        case 0:
-            dieToRemove = dice[0]
-            print("Remove 1d4")
-        case 1:
-            dieToRemove = dice[1]
-            print("Remove 1d6")
-        case 2:
-            dieToRemove = dice[2]
-            print("Remove 1d8")
-        case 3:
-            dieToRemove = dice[3]
-            print("Remove 1d10")
-        case 4:
-            dieToRemove = dice[4]
-            print("Remove 1d12")
-        case 5:
-            dieToRemove = dice[5]
-            print("Remove 1d20")
-        case 6:
-            dieToRemove = dice[6]
-            print("Remove 1d100")
-        default:
-            print("Error, invalid button tag")
-        }
-        
-        // Actually remove the die
+        // Get the die to remove from
+        var dieToRemove = dice[senderTag]
         dieToRemove.removeDie()
         
         // Update the button label, use sender.tag for the array index
-        if dieToRemove.modifier < 0 {
-            buttonText[senderTag].setTitle("\(dieToRemove.totalDice)\(dieToRemove.type)\(dieToRemove.modifier)", for: .normal)
-        } else {
-            buttonText[senderTag].setTitle("\(dieToRemove.totalDice)\(dieToRemove.type)+\(dieToRemove.modifier)", for: .normal)
-        }
+        updateLabels(senderTag, dieToRemove)
         
         // Update the actual die instance so every thing is up to date next time this is called.
-        switch dieToRemove.type {
-        case .d4:
-            dice[0] = dieToRemove
-        case .d6:
-            dice[1] = dieToRemove
-        case .d8:
-            dice[2] = dieToRemove
-        case .d10:
-            dice[3] = dieToRemove
-        case .d12:
-            dice[4] = dieToRemove
-        case .d20:
-            dice[5] = dieToRemove
-        case .d100:
-            dice[6] = dieToRemove
-        }
+        dice[senderTag] = dieToRemove
     }
     
     // Press and hold to add dice continuously
@@ -130,63 +96,16 @@ class RollViewController: UIViewController {
     
     //  Function for adding dice
     func addDice(senderTag: Int) {
-        var dieToAdd = Die()
-        
-        // Figure out which dice to remove from
-        switch senderTag {
-        case 0:
-            dieToAdd = dice[0]
-            print("Remove 1d4")
-        case 1:
-            dieToAdd = dice[1]
-            print("Remove 1d6")
-        case 2:
-            dieToAdd = dice[2]
-            print("Remove 1d8")
-        case 3:
-            dieToAdd = dice[3]
-            print("Remove 1d10")
-        case 4:
-            dieToAdd = dice[4]
-            print("Remove 1d12")
-        case 5:
-            dieToAdd = dice[5]
-            print("Remove 1d20")
-        case 6:
-            dieToAdd = dice[6]
-            print("Add 1d100")
-        default:
-            print("Error, invalid button tag")
-        }
+        var dieToAdd = dice[senderTag]
         
         // Actually remove the die
         dieToAdd.addDie()
         
         // Update the button label, use sender.tag for the array index
-        if dieToAdd.modifier < 0 {
-            buttonText[senderTag].setTitle("\(dieToAdd.totalDice)\(dieToAdd.type)\(dieToAdd.modifier)", for: .normal)
-        } else {
-            buttonText[senderTag].setTitle("\(dieToAdd.totalDice)\(dieToAdd.type)+\(dieToAdd.modifier)", for: .normal)
-        }
+        updateLabels(senderTag, dieToAdd)
         
         // Update the actual die instance so every thing is up to date next time this is called.
-        switch dieToAdd.type {
-        case .d4:
-            dice[0] = dieToAdd
-        case .d6:
-            dice[1] = dieToAdd
-        case .d8:
-            dice[2] = dieToAdd
-        case .d10:
-            dice[3] = dieToAdd
-        case .d12:
-            dice[4] = dieToAdd
-        case .d20:
-            dice[5] = dieToAdd
-        case .d100:
-            dice[6] = dieToAdd
-        }
-
+        dice[senderTag] = dieToAdd
     }
     
     //  Action for subtracting modifier
@@ -197,63 +116,16 @@ class RollViewController: UIViewController {
     }
     
     func subtractModifier(senderTag: Int) {
-        var modifierToSubtract = Die()
-        
-        // Figure out which dice to remove from
-        switch senderTag {
-        case 0:
-            modifierToSubtract = dice[0]
-            print("Subtract 1")
-        case 1:
-            modifierToSubtract = dice[1]
-            print("Subtract 1")
-        case 2:
-            modifierToSubtract = dice[2]
-            print("Subtract 1")
-        case 3:
-            modifierToSubtract = dice[3]
-            print("Subtract 1")
-        case 4:
-            modifierToSubtract = dice[4]
-            print("Subtract 1")
-        case 5:
-            modifierToSubtract = dice[5]
-            print("Subtract 1")
-        case 6:
-            modifierToSubtract = dice[6]
-            print("Subtract 1")
-        default:
-            print("Error, invalid button tag")
-        }
+        var modifierToSubtract = dice[senderTag]
         
         // Actually remove the die
         modifierToSubtract.removeModifier()
         
         // Update the button label, use sender.tag for the array index
-        if modifierToSubtract.modifier < 0 {
-            buttonText[senderTag].setTitle("\(modifierToSubtract.totalDice)\(modifierToSubtract.type)\(modifierToSubtract.modifier)", for: .normal)
-        } else {
-            buttonText[senderTag].setTitle("\(modifierToSubtract.totalDice)\(modifierToSubtract.type)+\(modifierToSubtract.modifier)", for: .normal)
-        }
+        updateLabels(senderTag, modifierToSubtract)
         
         // Update the actual die instance so every thing is up to date next time this is called.
-        switch modifierToSubtract.type {
-        case .d4:
-            dice[0] = modifierToSubtract
-        case .d6:
-            dice[1] = modifierToSubtract
-        case .d8:
-            dice[2] = modifierToSubtract
-        case .d10:
-            dice[3] = modifierToSubtract
-        case .d12:
-            dice[4] = modifierToSubtract
-        case .d20:
-            dice[5] = modifierToSubtract
-        case .d100:
-            dice[6] = modifierToSubtract
-        }
-
+        dice[senderTag] = modifierToSubtract
     }
     
     //  Action for adding modifier
@@ -263,98 +135,22 @@ class RollViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: {_ in self.addModifier(senderTag: sender.tag)})
     }
     func addModifier(senderTag: Int) {
-        var modifierToAdd = Die()
-        
-        // Figure out which dice to remove from
-        switch senderTag {
-        case 0:
-            modifierToAdd = dice[0]
-            print("Remove 1d4")
-        case 1:
-            modifierToAdd = dice[1]
-            print("Remove 1d6")
-        case 2:
-            modifierToAdd = dice[2]
-            print("Remove 1d8")
-        case 3:
-            modifierToAdd = dice[3]
-            print("Remove 1d10")
-        case 4:
-            modifierToAdd = dice[4]
-            print("Remove 1d12")
-        case 5:
-            modifierToAdd = dice[5]
-            print("Remove 1d20")
-        case 6:
-            modifierToAdd = dice[6]
-            print("Remove 1d100")
-        default:
-            print("Error, invalid button tag")
-        }
+        var modifierToAdd = dice[senderTag]
         
         // Actually remove the die
         modifierToAdd.addModifier()
         
         // Update the button label, use sender.tag for the array index
         // Also append the result of the roll to rollsToLog
-        if modifierToAdd.modifier < 0 {
-            buttonText[senderTag].setTitle("\(modifierToAdd.totalDice)\(modifierToAdd.type)\(modifierToAdd.modifier)", for: .normal)
-            
-        } else {
-            buttonText[senderTag].setTitle("\(modifierToAdd.totalDice)\(modifierToAdd.type)+\(modifierToAdd.modifier)", for: .normal)
-            
-        }
+        updateLabels(senderTag, modifierToAdd)
         
         // Update the actual die instance so every thing is up to date next time this is called.
-        switch modifierToAdd.type {
-        case .d4:
-            dice[0] = modifierToAdd
-        case .d6:
-            dice[1] = modifierToAdd
-        case .d8:
-            dice[2] = modifierToAdd
-        case .d10:
-            dice[3] = modifierToAdd
-        case .d12:
-            dice[4] = modifierToAdd
-        case .d20:
-            dice[5] = modifierToAdd
-        case .d100:
-            dice[6] = modifierToAdd
-        }
-
+        dice[senderTag] = modifierToAdd
     }
     
     // Action for rolling dice
     @IBAction func diceRollPressed(_ sender: UIButton) {
-        var dieToRoll = Die()
-        
-        // Figure out what die to roll based on button tags
-        switch sender.tag {
-        case 0:
-            dieToRoll = dice[0]
-            print("Tapped d4")
-        case 1:
-            dieToRoll = dice[1]
-            print("Tapped d6")
-        case 2:
-            dieToRoll = dice[2]
-            print("Tapped d8")
-        case 3:
-            dieToRoll = dice[3]
-            print("Tapped d10")
-        case 4:
-            dieToRoll = dice[4]
-            print("Tapped d12")
-        case 5:
-            dieToRoll = dice[5]
-            print("Tapped d20")
-        case 6:
-            dieToRoll = dice[6]
-            print("Tapped d100")
-        default:
-            print("Error, invalid dice tag")
-        }
+        let dieToRoll = dice[sender.tag]
         
         // Update the results label
         let resultValue = dieToRoll.rollDie()
@@ -412,8 +208,35 @@ class RollViewController: UIViewController {
         clearLabel.layer.cornerRadius = 20
     }
     
-    // TODO function to append the results of a roll and a timestamp into an array of log objects
-    // The function should be called every time a roll button is pressed.
+    // Function to load the color scheme
+    func loadColorScheme() {
+        // Set subtract die labels
+        for label in subtractDieLabel {
+            label.backgroundColor = colorScheme.buttonColor3
+        }
+        // Set add die labels
+        for label in addDieLabel {
+            label.backgroundColor = colorScheme.buttonColor3
+        }
+        // Set roll button color
+        for button in buttonText {
+            button.backgroundColor = colorScheme.buttonColor1
+        }
+        // Set add modifier
+        for button in addModifierLabel {
+            button.backgroundColor = colorScheme.buttonColor2
+        }
+        // Set remove modifier
+        for button in subtractModifierLabel {
+            button.backgroundColor = colorScheme.buttonColor2
+        }
+        // Set background, result label, clear button, log button, settings button
+        view.backgroundColor = colorScheme.backGroundColor
+        resultLabel.backgroundColor = colorScheme.labelColor1
+        clearLabel.backgroundColor = colorScheme.buttonColor4
+        logOutlet.backgroundColor = colorScheme.buttonColor2
+        settingsOutlet.backgroundColor = colorScheme.buttonColor2
+    }
     
     // Function to pass log item to LogViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -445,6 +268,7 @@ class RollViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
             roundButtons()
+            loadColorScheme()
     }
 
     override func didReceiveMemoryWarning() {

@@ -11,9 +11,17 @@ import UIKit
 class LogTableViewController: UITableViewController {
     // Array of logs to hold the appended logs for the tableView
     var rollLog: [Log] = []
+    
+    // color pallette object to hold the colors for various UI elements
+    var colorPalette = ColorPalette(backGroundColor: .black, buttonColor1: .blue, buttonColor2: .purple, buttonColor3: .red, buttonColor4: .yellow, labelColor1: .white)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        
+        tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,10 +59,10 @@ class LogTableViewController: UITableViewController {
 
         // Configure the cell...
         cell.update(with: logItem)
+        cell.roundCorners()
 
         return cell
     }
-    
 
     /*
     // Override to support conditional editing of the table view.

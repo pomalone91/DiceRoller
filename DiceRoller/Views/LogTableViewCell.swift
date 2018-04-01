@@ -20,6 +20,12 @@ class LogTableViewCell: UITableViewCell {
         timeStamp.text = "\(log.timeStamp)"
     }
     
+    func roundCorners() {
+        rollName.layer.cornerRadius = 15
+        rollResult.layer.cornerRadius = 15
+        timeStamp.layer.cornerRadius = 15
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

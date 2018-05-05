@@ -13,7 +13,7 @@ import UIKit
 class SettingsViewController: UIViewController {
     // Array of color palettes
     let colorChoices: [ColorPalette] = [
-        ColorPalette(backGroundColor: UIColor.black, buttonColor1: UIColor.green, buttonColor2: UIColor.brown, buttonColor3: UIColor.red, buttonColor4: UIColor.purple, labelColor1: UIColor.green),
+        ColorPalette(),
         ColorPalette(backGroundColor: UIColor.blue, buttonColor1: UIColor.red, buttonColor2: UIColor.brown, buttonColor3: UIColor.red, buttonColor4: UIColor.purple, labelColor1: UIColor.green),
         ColorPalette(backGroundColor: UIColor.gray, buttonColor1: UIColor.blue, buttonColor2: UIColor.brown, buttonColor3: UIColor.red, buttonColor4: UIColor.purple, labelColor1: UIColor.green),
         ColorPalette(backGroundColor: UIColor.green, buttonColor1: UIColor.blue, buttonColor2: UIColor.brown, buttonColor3: UIColor.red, buttonColor4: UIColor.purple, labelColor1: UIColor.green),
@@ -35,10 +35,8 @@ class SettingsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SettingsSegue" {
-            let rollViewController = segue.destination as! RollViewController
-            rollViewController.colorScheme = chosenColor
-        }
+        let rollViewController = segue.destination as! RollViewController
+        rollViewController.colorScheme = chosenColor
     }
 
     override func didReceiveMemoryWarning() {

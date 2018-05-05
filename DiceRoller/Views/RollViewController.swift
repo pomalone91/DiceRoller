@@ -243,7 +243,13 @@ class RollViewController: UIViewController {
         if segue.identifier == "LogSegue" {
             let logTableViewController = segue.destination as! LogTableViewController
             logTableViewController.rollLog = rollsToLog
-            //logViewController.rollLog.append(rollsToLog)
+        }
+    }
+    
+    @IBAction func unwindToRoll(unwindSegue: UIStoryboardSegue) {
+        if let settingsViewController = unwindSegue.source as? SettingsViewController {
+            colorScheme = settingsViewController.chosenColor
+            loadColorScheme()
         }
     }
     

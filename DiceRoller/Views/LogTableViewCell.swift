@@ -21,9 +21,18 @@ class LogTableViewCell: UITableViewCell {
     }
     
     func roundCorners() {
-        rollName.layer.cornerRadius = 15
-        rollResult.layer.cornerRadius = 15
-        timeStamp.layer.cornerRadius = 15
+        rollName.clipsToBounds = true
+        rollName.layer.cornerRadius = 5
+        rollResult.clipsToBounds = true
+        rollResult.layer.cornerRadius = 5
+        timeStamp.clipsToBounds = true
+        timeStamp.layer.cornerRadius = 5
+    }
+    
+    func loadColorScheme(_ colorScheme: ColorPalette) {
+        rollName.backgroundColor = colorScheme.backGroundColor
+        rollResult.backgroundColor = colorScheme.buttonColor1
+        timeStamp.backgroundColor = colorScheme.buttonColor2
     }
     
     override func awakeFromNib() {

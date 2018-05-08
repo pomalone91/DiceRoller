@@ -13,7 +13,7 @@ class LogTableViewController: UITableViewController {
     var rollLog: [Log] = []
     
     // color pallette object to hold the colors for various UI elements
-    var colorPalette = ColorPalette(backGroundColor: .black, buttonColor1: .blue, buttonColor2: .purple, buttonColor3: .red, buttonColor4: .yellow, labelColor1: .white)
+    var colorScheme = ColorPalette()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +60,16 @@ class LogTableViewController: UITableViewController {
         // Configure the cell...
         cell.update(with: logItem)
         cell.roundCorners()
+        cell.loadColorScheme(colorScheme)
+//        tableView.reloadData()
 
         return cell
     }
 
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "LogCell", for: indexPath) as! LogTableViewCell
+//        cell.rollName.backgroundColor = UIColor.white
+//    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

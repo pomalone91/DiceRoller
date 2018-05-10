@@ -31,8 +31,8 @@ class LogTableViewCell: UITableViewCell {
     
     func loadColorScheme(_ colorScheme: ColorPalette) {
         rollName.backgroundColor = colorScheme.backGroundColor
-        rollResult.backgroundColor = colorScheme.buttonColor1
-        timeStamp.backgroundColor = colorScheme.buttonColor2
+        rollResult.backgroundColor = colorScheme.rollColor
+        timeStamp.backgroundColor = colorScheme.modifierColor
     }
     
     override func awakeFromNib() {

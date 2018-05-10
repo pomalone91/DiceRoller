@@ -212,30 +212,31 @@ class RollViewController: UIViewController {
     func loadColorScheme() {
         // Set subtract die labels
         for label in subtractDieLabel {
-            label.backgroundColor = colorScheme.buttonColor3
+            label.backgroundColor = colorScheme.dieColor
         }
         // Set add die labels
         for label in addDieLabel {
-            label.backgroundColor = colorScheme.buttonColor3
+            label.backgroundColor = colorScheme.dieColor
         }
         // Set roll button color
         for button in buttonText {
-            button.backgroundColor = colorScheme.buttonColor1
+            button.backgroundColor = colorScheme.rollColor
         }
         // Set add modifier
         for button in addModifierLabel {
-            button.backgroundColor = colorScheme.buttonColor2
+            button.backgroundColor = colorScheme.modifierColor
+            button.isOpaque = true
         }
         // Set remove modifier
         for button in subtractModifierLabel {
-            button.backgroundColor = colorScheme.buttonColor2
+            button.backgroundColor = colorScheme.modifierColor
         }
         // Set background, result label, clear button, log button, settings button
         view.backgroundColor = colorScheme.backGroundColor
-        resultLabel.backgroundColor = colorScheme.labelColor1
-        clearLabel.backgroundColor = colorScheme.buttonColor4
-        logOutlet.backgroundColor = colorScheme.buttonColor2
-        settingsOutlet.backgroundColor = colorScheme.buttonColor2
+        resultLabel.backgroundColor = colorScheme.labelColor
+        clearLabel.backgroundColor = colorScheme.clearColor
+        logOutlet.backgroundColor = colorScheme.modifierColor
+        settingsOutlet.backgroundColor = colorScheme.modifierColor
     }
     
     // Function to pass log item to LogViewController

@@ -14,32 +14,64 @@
 import Foundation
 import UIKit
 
+enum Scheme {
+    case basic, hell, cyber, ice, shoggoth
+}
+
 struct ColorPalette {
     // Default color scheme
     var backGroundColor: UIColor
-    var buttonColor1: UIColor
-    var buttonColor2: UIColor
-    var buttonColor3: UIColor
-    var buttonColor4: UIColor
-    var labelColor1: UIColor
+    var rollColor: UIColor
+    var modifierColor: UIColor
+    var dieColor: UIColor
+    var clearColor: UIColor
+    var labelColor: UIColor
     
+    // Scheme based init
+    init(_ scheme: Scheme) {
+        switch scheme {
+        case .basic:
+            self.backGroundColor = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
+            self.rollColor = UIColor(displayP3Red: 73/255, green: 97/255, blue: 101/255, alpha: 1)
+            self.modifierColor = UIColor(displayP3Red: 29/255, green: 30/255, blue: 31/255, alpha: 1)
+            self.dieColor = UIColor(displayP3Red: 89/255, green: 74/255, blue: 57/255, alpha: 1)
+            self.clearColor = UIColor(displayP3Red: 128/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.labelColor = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
+        case .hell:
+            self.backGroundColor = UIColor(red: 41/255, green: 14/255, blue: 12/255, alpha: 1)
+            self.rollColor = UIColor(red: 80/255, green: 8/255, blue: 3/255, alpha: 1)
+            self.modifierColor = UIColor(red: 84/255, green: 82/255, blue: 82/255, alpha: 1)
+            self.dieColor = UIColor.black
+            self.clearColor = UIColor(red: 29/255, green: 54/255, blue: 53/255, alpha: 1)
+            self.labelColor = UIColor(red: 41/255, green: 14/255, blue: 12/255, alpha: 1)
+        default:
+            self.backGroundColor = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
+            self.rollColor = UIColor(displayP3Red: 73/255, green: 97/255, blue: 101/255, alpha: 1)
+            self.modifierColor = UIColor(displayP3Red: 29/255, green: 30/255, blue: 31/255, alpha: 1)
+            self.dieColor = UIColor(displayP3Red: 89/255, green: 74/255, blue: 57/255, alpha: 1)
+            self.clearColor = UIColor(displayP3Red: 128/255, green: 0/255, blue: 0/255, alpha: 1)
+            self.labelColor = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
+        }
+    }
     // Manual init
-    init(backGroundColor: UIColor, buttonColor1: UIColor, buttonColor2: UIColor, buttonColor3: UIColor, buttonColor4: UIColor, labelColor1: UIColor) {
+    init(backGroundColor: UIColor, rollColor: UIColor, modifierColor: UIColor, dieColor: UIColor, clearColor: UIColor, labelColor: UIColor) {
         self.backGroundColor = backGroundColor
-        self.buttonColor1 = buttonColor1
-        self.buttonColor2 = buttonColor2
-        self.buttonColor3 = buttonColor3
-        self.buttonColor4 = buttonColor4
-        self.labelColor1 = labelColor1
+        self.rollColor = rollColor
+        self.modifierColor = modifierColor
+        self.dieColor = dieColor
+        self.clearColor = clearColor
+        self.labelColor = labelColor
     }
     
     // Default init
     init() {
         self.backGroundColor = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
-        self.buttonColor1 = UIColor(displayP3Red: 73/255, green: 97/255, blue: 101/255, alpha: 1)
-        self.buttonColor2 = UIColor(displayP3Red: 29/255, green: 30/255, blue: 31/255, alpha: 1)
-        self.buttonColor3 = UIColor(displayP3Red: 89/255, green: 74/255, blue: 57/255, alpha: 1)
-        self.buttonColor4 = UIColor(displayP3Red: 128/255, green: 0/255, blue: 0/255, alpha: 1)
-        self.labelColor1 = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
+        self.rollColor = UIColor(displayP3Red: 73/255, green: 97/255, blue: 101/255, alpha: 1)
+        self.modifierColor = UIColor(displayP3Red: 29/255, green: 30/255, blue: 31/255, alpha: 1)
+        self.dieColor = UIColor(displayP3Red: 89/255, green: 74/255, blue: 57/255, alpha: 1)
+        self.clearColor = UIColor(displayP3Red: 128/255, green: 0/255, blue: 0/255, alpha: 1)
+        self.labelColor = UIColor(displayP3Red: 42/255, green: 50/255, blue: 63/255, alpha: 1)
     }
+    
 }
+

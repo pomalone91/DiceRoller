@@ -23,44 +23,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="LXG-2W-O3h">
-                                <rect key="frame" x="16" y="148.5" width="343" height="370.5"/>
+                                <rect key="frame" x="16" y="69" width="343" height="529.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color Schemes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3S-bs-xhy">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="29.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZS4-Wh-gpZ">
-                                        <rect key="frame" x="0.0" y="60.5" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="69.5" width="343" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Rqm-WO-kMn"/>
+                                        </constraints>
                                         <state key="normal" title="Basic Theme"/>
                                         <connections>
                                             <action selector="themePressed:" destination="izJ-WI-Dha" eventType="touchUpInside" id="NKl-EP-gas"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LA-hi-GmZ">
-                                        <rect key="frame" x="0.0" y="130.5" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="169.5" width="343" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="X7T-pb-wZd"/>
+                                        </constraints>
                                         <state key="normal" title="Shub Theme'urath"/>
                                         <connections>
                                             <action selector="themePressed:" destination="izJ-WI-Dha" eventType="touchUpInside" id="RbT-ea-be7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Jo-zD-Edd">
-                                        <rect key="frame" x="0.0" y="200.5" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="269.5" width="343" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="aOw-h8-icH"/>
+                                        </constraints>
                                         <state key="normal" title="Theme()"/>
                                         <connections>
                                             <action selector="themePressed:" destination="izJ-WI-Dha" eventType="touchUpInside" id="Udf-BG-11P"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2w-dh-7F3">
-                                        <rect key="frame" x="0.0" y="270.5" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="369.5" width="343" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Av2-70-odd"/>
+                                        </constraints>
                                         <state key="normal" title="Bright Theme"/>
                                         <connections>
                                             <action selector="themePressed:" destination="izJ-WI-Dha" eventType="touchUpInside" id="Yf7-TB-fPE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nec-H9-UP0">
-                                        <rect key="frame" x="0.0" y="340.5" width="343" height="30"/>
+                                        <rect key="frame" x="0.0" y="469.5" width="343" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="DJ9-oW-HlN"/>
+                                        </constraints>
                                         <state key="normal" title="Under Theme"/>
                                         <connections>
                                             <action selector="themePressed:" destination="izJ-WI-Dha" eventType="touchUpInside" id="z9h-Yn-HpS"/>
@@ -88,6 +103,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outletCollection property="themeButtons" destination="ZS4-Wh-gpZ" collectionClass="NSMutableArray" id="g90-TH-uKe"/>
+                        <outletCollection property="themeButtons" destination="5LA-hi-GmZ" collectionClass="NSMutableArray" id="wuZ-kM-7Sc"/>
+                        <outletCollection property="themeButtons" destination="9Jo-zD-Edd" collectionClass="NSMutableArray" id="h1W-fV-RiU"/>
+                        <outletCollection property="themeButtons" destination="A2w-dh-7F3" collectionClass="NSMutableArray" id="GX9-rb-W0b"/>
+                        <outletCollection property="themeButtons" destination="nec-H9-UP0" collectionClass="NSMutableArray" id="kBw-6g-xp2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FuN-Ot-O2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="PfA-kY-0nc" userLabel="Exit" sceneMemberID="exit"/>

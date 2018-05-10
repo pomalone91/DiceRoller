@@ -22,6 +22,8 @@ class SettingsViewController: UIViewController {
     // chosen color to pass in segue
     var chosenColor = ColorPalette()
     
+    @IBOutlet var themeButtons: [UIButton]!
+    
     @IBAction func themePressed(_ sender: UIButton) {
         var scheme: Scheme
         switch sender.tag {
@@ -39,14 +41,22 @@ class SettingsViewController: UIViewController {
             scheme = .basic
         }
         chosenColor = ColorPalette(scheme)
+        setupStyle()
     }
     
-    
+    // Function to load color scheme for settings
+    func setupStyle() {
+        view.backgroundColor = chosenColor.backGroundColor
+        for button in themeButtons {
+            button.backgroundColor = chosenColor.rollColor
+            button.layer.cornerRadius = 15
+            button.setTitleColor(chosenColor.textColor, for: .normal)
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        // Do any additional setup after loading the view.
+        setupStyle()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

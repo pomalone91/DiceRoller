@@ -13,9 +13,10 @@ class LogTableViewCell: UITableViewCell {
     @IBOutlet weak var rollName: UILabel!
     @IBOutlet weak var rollResult: UILabel!
     @IBOutlet weak var timeStamp: UILabel!
+    @IBOutlet weak var cellBackground: UIView!
     
     func update(with log: Log) {
-        rollName.text = log.roll
+        rollName.text = "\(log.roll) = \(log.result)"
         rollResult.text = "\(log.result)"
         timeStamp.text = "\(log.timeStamp)"
     }
@@ -30,9 +31,13 @@ class LogTableViewCell: UITableViewCell {
     }
     
     func loadColorScheme(_ colorScheme: ColorPalette) {
-        rollName.backgroundColor = colorScheme.backGroundColor
-        rollResult.backgroundColor = colorScheme.rollColor
-        timeStamp.backgroundColor = colorScheme.modifierColor
+        rollName.backgroundColor = colorScheme.dieColor
+        rollName.textColor = colorScheme.textColor
+        rollResult.backgroundColor = colorScheme.dieColor
+        rollResult.textColor = colorScheme.textColor
+        timeStamp.backgroundColor = colorScheme.rollColor
+        timeStamp.textColor = colorScheme.textColor
+        cellBackground.backgroundColor = colorScheme.backGroundColor
     }
     
     override func awakeFromNib() {

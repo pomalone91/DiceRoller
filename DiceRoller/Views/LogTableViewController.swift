@@ -22,6 +22,8 @@ class LogTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 120
         
         tableView.reloadData()
+        
+        setupStyle()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -64,6 +66,13 @@ class LogTableViewController: UITableViewController {
 //        tableView.reloadData()
 
         return cell
+    }
+    
+    func setupStyle() {
+        tableView.backgroundColor = colorScheme.backGroundColor
+        navigationController?.navigationBar.barTintColor = colorScheme.backGroundColor
+        navigationController?.navigationBar.tintColor = colorScheme.textColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : colorScheme.textColor]
     }
 
 //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

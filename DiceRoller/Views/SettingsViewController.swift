@@ -52,7 +52,8 @@ class SettingsViewController: UIViewController {
             button.layer.cornerRadius = 15
             button.setTitleColor(chosenColor.textColor, for: .normal)
         }
-        
+        navigationController?.navigationBar.barTintColor = chosenColor.backGroundColor
+        navigationController?.navigationBar.tintColor = chosenColor.textColor
     }
     override func viewDidLoad() {
         super.viewDidLoad()

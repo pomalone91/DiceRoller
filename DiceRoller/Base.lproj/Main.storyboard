@@ -98,6 +98,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="never" id="d5G-IL-xbr">
                         <barButtonItem key="leftBarButtonItem" title="Done" id="SfD-Q2-m3r">
+                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="PfA-kY-0nc" kind="unwind" unwindAction="unwindToRollWithUnwindSegue:" id="Zdn-EZ-2tU"/>
                             </connections>
@@ -836,7 +837,7 @@
             </objects>
             <point key="canvasLocation" x="12" y="-1255"/>
         </scene>
-        <!--Log Table View Controller-->
+        <!--Log-->
         <scene sceneID="JKO-QQ-Ly6">
             <objects>
                 <tableViewController id="Lm9-Gh-4wT" customClass="LogTableViewController" customModule="DiceRoller" customModuleProvider="target" sceneMemberID="viewController">
@@ -911,7 +912,6 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="uUB-Vy-8NP" firstAttribute="top" secondItem="bWA-kb-RYW" secondAttribute="top" constant="8" id="AfL-vA-CbO"/>
                                                 <constraint firstAttribute="bottom" secondItem="uUB-Vy-8NP" secondAttribute="bottom" constant="9.5" id="NC3-MP-ih3"/>
@@ -929,6 +929,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
+                                    <outlet property="cellBackground" destination="bWA-kb-RYW" id="gGw-5a-tOu"/>
                                     <outlet property="rollName" destination="qof-4L-SDi" id="j0V-tj-OkB"/>
                                     <outlet property="rollResult" destination="FIj-tT-QwB" id="yfd-5D-eaa"/>
                                     <outlet property="timeStamp" destination="JGq-en-x4V" id="fsg-Ib-3QL"/>
@@ -940,6 +941,7 @@
                             <outlet property="delegate" destination="Lm9-Gh-4wT" id="ods-kB-v4g"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Log" id="Rc4-hJ-tsx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Awg-Xf-DTL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

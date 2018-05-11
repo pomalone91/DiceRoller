@@ -245,6 +245,9 @@ class RollViewController: UIViewController {
             let logTableViewController = segue.destination as! LogTableViewController
             logTableViewController.rollLog = rollsToLog
             logTableViewController.colorScheme = colorScheme
+        } else if segue.identifier == "SettingsSegue" {
+            let settingsViewController = segue.destination as! SettingsViewController
+            settingsViewController.chosenColor = colorScheme
         }
     }
     

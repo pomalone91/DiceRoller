@@ -36,7 +36,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Rqm-WO-kMn"/>
                                         </constraints>
-                                        <state key="normal" title="Basic Theme"/>
+                                        <state key="normal" title="Basic"/>
                                         <connections>
                                             <action selector="themePressed:" destination="izJ-WI-Dha" eventType="touchUpInside" id="NKl-EP-gas"/>
                                         </connections>
@@ -46,7 +46,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="X7T-pb-wZd"/>
                                         </constraints>
-                                        <state key="normal" title="Shub Theme'urath"/>
+                                        <state key="normal" title="Hell"/>
                                         <connections>
                                             <action selector="themePressed:" destination="izJ-WI-Dha" eventType="touchUpInside" id="RbT-ea-be7"/>
                                         </connections>
@@ -105,6 +105,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="titleLabel" destination="M3S-bs-xhy" id="Ijh-Hb-K1b"/>
                         <outletCollection property="themeButtons" destination="ZS4-Wh-gpZ" collectionClass="NSMutableArray" id="g90-TH-uKe"/>
                         <outletCollection property="themeButtons" destination="5LA-hi-GmZ" collectionClass="NSMutableArray" id="wuZ-kM-7Sc"/>
                         <outletCollection property="themeButtons" destination="9Jo-zD-Edd" collectionClass="NSMutableArray" id="h1W-fV-RiU"/>
@@ -862,43 +863,29 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="agO-jk-rnv">
                                                             <rect key="frame" x="0.0" y="0.0" width="179.5" height="62"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qof-4L-SDi">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="179.5" height="28"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIj-tT-QwB">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="179.5" height="62"/>
                                                                     <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="28" id="1zZ-XA-oVM"/>
-                                                                        <constraint firstAttribute="width" constant="179.5" id="8rt-ij-8FL"/>
-                                                                    </constraints>
-                                                                    <attributedString key="attributedText">
-                                                                        <fragment content="Label">
-                                                                            <attributes>
-                                                                                <font key="NSFont" size="18" name=".SFNSDisplay"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="30" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIj-tT-QwB">
-                                                                    <rect key="frame" x="0.0" y="34" width="179.5" height="28"/>
-                                                                    <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="28" id="Uzi-Pg-jFS"/>
                                                                         <constraint firstAttribute="width" constant="179.5" id="ztN-UJ-4af"/>
                                                                     </constraints>
                                                                     <attributedString key="attributedText">
                                                                         <fragment content="Label">
                                                                             <attributes>
                                                                                 <font key="NSFont" size="18" name=".SFNSDisplay"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="30" tighteningFactorForTruncation="0.0"/>
+                                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="30" tighteningFactorForTruncation="0.0"/>
                                                                             </attributes>
                                                                         </fragment>
                                                                     </attributedString>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="FIj-tT-QwB" firstAttribute="top" secondItem="agO-jk-rnv" secondAttribute="top" id="89E-Gf-A1a"/>
+                                                                <constraint firstAttribute="bottom" secondItem="FIj-tT-QwB" secondAttribute="bottom" id="rv3-1W-Uog"/>
+                                                            </constraints>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGq-en-x4V">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGq-en-x4V">
                                                             <rect key="frame" x="185.5" y="0.0" width="179.5" height="62"/>
                                                             <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -930,7 +917,6 @@
                                 <color key="backgroundColor" red="0.1137254902" green="0.1176470588" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="cellBackground" destination="bWA-kb-RYW" id="gGw-5a-tOu"/>
-                                    <outlet property="rollName" destination="qof-4L-SDi" id="j0V-tj-OkB"/>
                                     <outlet property="rollResult" destination="FIj-tT-QwB" id="yfd-5D-eaa"/>
                                     <outlet property="timeStamp" destination="JGq-en-x4V" id="fsg-Ib-3QL"/>
                                 </connections>

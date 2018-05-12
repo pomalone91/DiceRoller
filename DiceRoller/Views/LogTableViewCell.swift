@@ -10,20 +10,16 @@ import UIKit
 
 class LogTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var rollName: UILabel!
     @IBOutlet weak var rollResult: UILabel!
     @IBOutlet weak var timeStamp: UILabel!
     @IBOutlet weak var cellBackground: UIView!
     
     func update(with log: Log) {
-        rollName.text = "\(log.roll) = \(log.result)"
-        rollResult.text = "\(log.result)"
+        rollResult.text = "\(log.roll) = \(log.result)"
         timeStamp.text = "\(log.timeStamp)"
     }
     
     func roundCorners() {
-        rollName.clipsToBounds = true
-        rollName.layer.cornerRadius = 5
         rollResult.clipsToBounds = true
         rollResult.layer.cornerRadius = 5
         timeStamp.clipsToBounds = true
@@ -31,8 +27,6 @@ class LogTableViewCell: UITableViewCell {
     }
     
     func loadColorScheme(_ colorScheme: ColorPalette) {
-        rollName.backgroundColor = colorScheme.dieColor
-        rollName.textColor = colorScheme.textColor
         rollResult.backgroundColor = colorScheme.dieColor
         rollResult.textColor = colorScheme.textColor
         timeStamp.backgroundColor = colorScheme.rollColor

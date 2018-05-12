@@ -11,18 +11,11 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-    // Array of color palettes
-//    let colorChoices: [ColorPalette] = [
-//        ColorPalette(),
-//        ColorPalette(backGroundColor: UIColor(red: 41/255, green: 14/255, blue: 12/255, alpha: 1) , rollColor: UIColor(red: 80/255, green: 8/255, blue: 3/255, alpha: 1/255), modifierColor: UIColor(red: 84/255, green: 82/255, blue: 82/255, alpha: 1/255), dieColor: UIColor.black, clearColor: UIColor(red: 90/255, green: 54/255, blue: 53/255, alpha: 1), labelColor: UIColor(red: 41/255, green: 14/255, blue: 12/255, alpha: 1)),
-//        ColorPalette(backGroundColor: UIColor.gray, rollColor: UIColor.blue, modifierColor: UIColor.brown, dieColor: UIColor.red, clearColor: UIColor.purple, labelColor: UIColor.green),
-//        ColorPalette(backGroundColor: UIColor.green, rollColor: UIColor.blue, modifierColor: UIColor.brown, dieColor: UIColor.red, clearColor: UIColor.purple, labelColor: UIColor.green),
-//        ColorPalette(backGroundColor: UIColor.white, rollColor: UIColor.blue, modifierColor: UIColor.brown, dieColor: UIColor.red, clearColor: UIColor.purple, labelColor: UIColor.green)]
-//
     // chosen color to pass in segue
     var chosenColor = ColorPalette()
     
     @IBOutlet var themeButtons: [UIButton]!
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func themePressed(_ sender: UIButton) {
         var scheme: Scheme
@@ -54,6 +47,8 @@ class SettingsViewController: UIViewController {
         }
         navigationController?.navigationBar.barTintColor = chosenColor.backGroundColor
         navigationController?.navigationBar.tintColor = chosenColor.textColor
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : chosenColor.textColor]
+        titleLabel.textColor = chosenColor.textColor
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -243,7 +243,7 @@ class RollViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LogSegue" {
             let logTableViewController = segue.destination as! LogTableViewController
-            logTableViewController.rollLog = rollsToLog
+            logTableViewController.rollLog = rollsToLog.reversed()
             logTableViewController.colorScheme = colorScheme
         } else if segue.identifier == "SettingsSegue" {
             let settingsViewController = segue.destination as! SettingsViewController

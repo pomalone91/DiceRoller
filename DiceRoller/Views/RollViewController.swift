@@ -12,7 +12,8 @@
  */
 import UIKit
 
-class RollViewController: UIViewController {
+class RollViewController: UIViewController, SettingsDelegate {
+    
     
     // Create color pallette object
     
@@ -239,6 +240,13 @@ class RollViewController: UIViewController {
         settingsOutlet.backgroundColor = colorScheme.modifierColor
     }
     
+    // Conform to SettingsDelegate
+    func finishPassing(_ colorScheme: ColorPalette) {
+        self.colorScheme = colorScheme
+        print("Passed color scheme")
+        loadColorScheme()
+    }
+    
     // Function to pass log item to LogViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LogSegue" {
@@ -248,16 +256,10 @@ class RollViewController: UIViewController {
         } else if segue.identifier == "SettingsSegue" {
             let settingsViewController = segue.destination as! SettingsViewController
             settingsViewController.chosenColor = colorScheme
+            settingsViewController.delegate = self
         }
     }
-    
-    @IBAction func unwindToRoll(unwindSegue: UIStoryboardSegue) {
-        if let settingsViewController = unwindSegue.source as? SettingsViewController {
-            colorScheme = settingsViewController.chosenColor
-            loadColorScheme()
-        }
-    }
-    
+
     // Stuff to hide the navigation bar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

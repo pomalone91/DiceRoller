@@ -10,7 +10,13 @@
 
 import UIKit
 
+protocol SettingsDelegate {
+    func finishPassing(_ colorScheme: ColorPalette)
+}
+
 class SettingsViewController: UIViewController {
+    // delegate variable
+    var delegate: SettingsDelegate?
     // chosen color to pass in segue
     var chosenColor = ColorPalette()
     
@@ -35,6 +41,8 @@ class SettingsViewController: UIViewController {
         }
         chosenColor = ColorPalette(scheme)
         setupStyle()
+        
+        delegate?.finishPassing(chosenColor)
     }
     
     // Function to load color scheme for settings
@@ -53,11 +61,6 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStyle()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let rollViewController = segue.destination as! RollViewController
-        rollViewController.colorScheme = chosenColor
     }
 
     override func didReceiveMemoryWarning() {

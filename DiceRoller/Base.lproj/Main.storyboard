@@ -92,18 +92,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="LXG-2W-O3h" secondAttribute="trailing" id="VGT-Pv-axN"/>
                             <constraint firstItem="LXG-2W-O3h" firstAttribute="leading" secondItem="E5V-ME-lZ8" secondAttribute="leadingMargin" id="gPZ-Uc-Vok"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="iBn-DV-Pdk" appends="YES" id="wrK-Vh-joA"/>
-                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="never" id="d5G-IL-xbr">
-                        <barButtonItem key="leftBarButtonItem" title="Done" id="SfD-Q2-m3r">
-                            <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="PfA-kY-0nc" kind="unwind" unwindAction="unwindToRollWithUnwindSegue:" id="Zdn-EZ-2tU"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="never" id="d5G-IL-xbr"/>
                     <connections>
                         <outlet property="titleLabel" destination="M3S-bs-xhy" id="Ijh-Hb-K1b"/>
                         <outletCollection property="themeButtons" destination="ZS4-Wh-gpZ" collectionClass="NSMutableArray" id="g90-TH-uKe"/>
@@ -114,12 +104,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FuN-Ot-O2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="PfA-kY-0nc" userLabel="Exit" sceneMemberID="exit"/>
-                <swipeGestureRecognizer direction="right" id="iBn-DV-Pdk">
-                    <connections>
-                        <segue destination="PfA-kY-0nc" kind="unwind" unwindAction="unwindToRollWithUnwindSegue:" id="1Te-4B-13K"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="958" y="-1255"/>
         </scene>

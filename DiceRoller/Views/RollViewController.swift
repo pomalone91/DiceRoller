@@ -214,28 +214,34 @@ class RollViewController: UIViewController, SettingsDelegate {
         // Set subtract die labels
         for label in subtractDieLabel {
             label.backgroundColor = colorScheme.dieColor
+            label.setTitleColor(colorScheme.textColor, for: .normal)
         }
         // Set add die labels
         for label in addDieLabel {
             label.backgroundColor = colorScheme.dieColor
+            label.setTitleColor(colorScheme.textColor, for: .normal)
         }
         // Set roll button color
         for button in buttonText {
             button.backgroundColor = colorScheme.rollColor
+            button.setTitleColor(colorScheme.textColor, for: .normal)
         }
         // Set add modifier
         for button in addModifierLabel {
             button.backgroundColor = colorScheme.modifierColor
-            button.isOpaque = true
+            button.setTitleColor(colorScheme.textColor, for: .normal)
         }
         // Set remove modifier
         for button in subtractModifierLabel {
             button.backgroundColor = colorScheme.modifierColor
+            button.setTitleColor(colorScheme.textColor, for: .normal)
         }
         // Set background, result label, clear button, log button, settings button
         view.backgroundColor = colorScheme.backGroundColor
         resultLabel.backgroundColor = colorScheme.labelColor
+        resultLabel.textColor = colorScheme.textColor
         clearLabel.backgroundColor = colorScheme.clearColor
+        clearLabel.setTitleColor(colorScheme.textColor, for: .normal)
         logOutlet.backgroundColor = colorScheme.modifierColor
         settingsOutlet.backgroundColor = colorScheme.modifierColor
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogTableViewController: UITableViewController {
+class LogTableViewController: UITableViewController, SettingsDelegate {
     // Array of logs to hold the appended logs for the tableView
     var rollLog: [Log] = []
     
@@ -73,6 +73,12 @@ class LogTableViewController: UITableViewController {
         navigationController?.navigationBar.barTintColor = colorScheme.backGroundColor
         navigationController?.navigationBar.tintColor = colorScheme.textColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : colorScheme.textColor]
+    }
+    
+    func finishPassing(_ colorScheme: ColorPalette) {
+        self.colorScheme = colorScheme
+        print("Passed color scheme to log")
+        setupStyle()
     }
 
 //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

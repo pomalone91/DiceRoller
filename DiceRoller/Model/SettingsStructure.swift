@@ -14,11 +14,17 @@
 import Foundation
 import UIKit
 
+protocol ColorPaletteDelegate: class {
+    func didRecieveUpdateData(_ colors: ColorPalette)
+}
+
 enum Scheme {
     case basic, hell, cyber, ice, shoggoth
 }
-
-struct ColorPalette {
+class ColorPalette {
+    // Delegate variable
+    weak var delegate: ColorPaletteDelegate?
+    
     // Default color scheme
     var backGroundColor: UIColor
     var rollColor: UIColor

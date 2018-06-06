@@ -52,6 +52,8 @@ class SettingsViewController: UIViewController {
             button.backgroundColor = chosenColor.rollColor
             button.layer.cornerRadius = 15
             button.setTitleColor(chosenColor.textColor, for: .normal)
+            // Set up for dynamic type text
+            button.titleLabel?.font = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         }
         navigationController?.navigationBar.barTintColor = chosenColor.backGroundColor
         navigationController?.navigationBar.tintColor = chosenColor.textColor

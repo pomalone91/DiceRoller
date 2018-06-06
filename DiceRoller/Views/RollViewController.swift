@@ -13,10 +13,6 @@
 import UIKit
 
 class RollViewController: UIViewController, SettingsDelegate {
-    
-    
-    // Create color pallette object
-    
     //  Create the dice
     var dice = [Die(type: .d4, totalDice: 1 , modifier: 0),
                Die(type: .d6, totalDice: 1 , modifier: 0),
@@ -38,6 +34,10 @@ class RollViewController: UIViewController, SettingsDelegate {
     // ColorScheme object to hold the main color scheme
     var colorScheme = ColorPalette()
     
+    // Screen size
+    let screenWidth = UIScreen.main.bounds.width
+    let screenHeight = UIScreen.main.bounds.height
+    
     //  Outlet for result label
     @IBOutlet weak var resultLabel: UILabel!
    
@@ -52,6 +52,10 @@ class RollViewController: UIViewController, SettingsDelegate {
     @IBOutlet weak var clearLabel: UIButton!
     @IBOutlet weak var settingsOutlet: UIButton!
     @IBOutlet weak var logOutlet: UIButton!
+    
+    // Constraint outlets
+    @IBOutlet weak var resultLabelConstraint: NSLayoutConstraint!
+    @IBOutlet var dieRowConstraints: [NSLayoutConstraint]!
     
     // Function to update all of the labels
     func updateLabels(_ senderTag: Int, _ die: Die) {
@@ -246,10 +250,32 @@ class RollViewController: UIViewController, SettingsDelegate {
         settingsOutlet.backgroundColor = colorScheme.modifierColor
     }
     
+    // Set up for SE and 4s
+    func setUpForSmallScreens() {
+        if screenHeight <= 568 {
+            resultLabelConstraint.constant = 40
+            for constaint in dieRowConstraints {
+                constaint.constant = 40
+            }
+            for i in 0...buttonText.count - 1 {
+                buttonText[i].layer.cornerRadius = 10
+                buttonText[i].titleLabel?.font = UIFont(name: "System Font Regular", size: 15.0)
+                subtractDieLabel[i].layer.cornerRadius = 15
+                subtractDieLabel[i].titleLabel?.font = UIFont(name: "System Font Regular", size: 15.0)
+                addDieLabel[i].layer.cornerRadius = 15
+                subtractModifierLabel[i].layer.cornerRadius = 15
+                addModifierLabel[i].layer.cornerRadius = 15
+                settingsOutlet.layer.cornerRadius = 15
+                logOutlet.layer.cornerRadius = 15
+            }
+            
+            clearLabel.layer.cornerRadius = 10
+        }
+    }
     // Conform to SettingsDelegate
     func finishPassing(_ colorScheme: ColorPalette) {
         self.colorScheme = colorScheme
-        print("Passed color scheme")
+        print("Passed color scheme to RollView")
         loadColorScheme()
     }
     
@@ -259,6 +285,11 @@ class RollViewController: UIViewController, SettingsDelegate {
             let logTableViewController = segue.destination as! LogTableViewController
             logTableViewController.rollLog = rollsToLog.reversed()
             logTableViewController.colorScheme = colorScheme
+            
+            // Set up settings delegate
+            let settingsViewController = SettingsViewController()
+            settingsViewController.delegate = self
+            
         } else if segue.identifier == "SettingsSegue" {
             let settingsViewController = segue.destination as! SettingsViewController
             settingsViewController.chosenColor = colorScheme
@@ -288,13 +319,16 @@ class RollViewController: UIViewController, SettingsDelegate {
             super.viewDidLoad()
             roundButtons()
             loadColorScheme()
+            print(screenWidth)
+            print(screenHeight)
+            setUpForSmallScreens()
+            
+            
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 

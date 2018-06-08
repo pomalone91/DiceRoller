@@ -9,21 +9,39 @@
 import UIKit
 
 class LogTableViewController: UITableViewController, SettingsDelegate {
+    // Variable to determine if the app was just launched
+    var freshLaunch = true
     // Array of logs to hold the appended logs for the tableView
     var rollLog: [Log] = []
     
     // color pallette object to hold the colors for various UI elements
     var colorScheme = ColorPalette()
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // Set the actual first view to Roll View controller if the app was just launched
+        if freshLaunch {
+            self.tabBarController?.selectedIndex = 1
+            freshLaunch = false
+        }
+        // Append new log items to rollLog
+        let tabBar = tabBarController as! TabViewController
+        rollLog = []
+        rollLog.append(contentsOf: tabBar.rollLog)
+    
+        tableView.reloadData()
+        setupStyle()
+        
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Set up row heights
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
         
-        tableView.reloadData()
         
-        setupStyle()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

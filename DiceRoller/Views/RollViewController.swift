@@ -279,22 +279,35 @@ class RollViewController: UIViewController, SettingsDelegate {
         loadColorScheme()
     }
     
+    // Function to load roll log into this view from tab bar
+    func getRollLog() {
+        let tabBar = tabBarController as! TabViewController
+        rollsToLog = []
+        rollsToLog.append(contentsOf: tabBar.rollLog)
+    }
+    
+    // Log Rolls back to TabBar
+    func logRolls() {
+        let tabBar = tabBarController as! TabViewController
+        tabBar.rollLog.append(contentsOf: rollsToLog)
+    }
+    
     // Function to pass log item to LogViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LogSegue" {
-            let logTableViewController = segue.destination as! LogTableViewController
-            logTableViewController.rollLog = rollsToLog.reversed()
-            logTableViewController.colorScheme = colorScheme
-            
-            // Set up settings delegate
-            let settingsViewController = SettingsViewController()
-            settingsViewController.delegate = self
-            
-        } else if segue.identifier == "SettingsSegue" {
-            let settingsViewController = segue.destination as! SettingsViewController
-            settingsViewController.chosenColor = colorScheme
-            settingsViewController.delegate = self
-        }
+//        if segue.identifier == "LogSegue" {
+//            let logTableViewController = segue.destination as! LogTableViewController
+//            logTableViewController.rollLog = rollsToLog.reversed()
+//            logTableViewController.colorScheme = colorScheme
+//
+//            // Set up settings delegate
+//            let settingsViewController = SettingsViewController()
+//            settingsViewController.delegate = self
+//
+//        } else if segue.identifier == "SettingsSegue" {
+//            let settingsViewController = segue.destination as! SettingsViewController
+//            settingsViewController.chosenColor = colorScheme
+//            settingsViewController.delegate = self
+//        }
     }
 
     // Stuff to hide the navigation bar
@@ -303,6 +316,9 @@ class RollViewController: UIViewController, SettingsDelegate {
         
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        // Get roll Log
+        getRollLog()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -313,9 +329,12 @@ class RollViewController: UIViewController, SettingsDelegate {
         
         // Show the navigation bar on other view controllers
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        // Send new rolls to TabBar
+        logRolls()
     }
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
             super.viewDidLoad()
             roundButtons()
             loadColorScheme()

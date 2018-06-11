@@ -289,6 +289,7 @@ class RollViewController: UIViewController, SettingsDelegate {
     // Log Rolls back to TabBar
     func logRolls() {
         let tabBar = tabBarController as! TabViewController
+        tabBar.rollLog = []
         tabBar.rollLog.append(contentsOf: rollsToLog)
     }
     

@@ -12,7 +12,7 @@
  */
 import UIKit
 
-class RollViewController: UIViewController, SettingsDelegate {
+class RollViewController: UIViewController {
     //  Create the dice
     var dice = [Die(type: .d4, totalDice: 1 , modifier: 0),
                Die(type: .d6, totalDice: 1 , modifier: 0),
@@ -50,8 +50,6 @@ class RollViewController: UIViewController, SettingsDelegate {
     @IBOutlet var subtractModifierLabel: [UIButton]!
     @IBOutlet var addModifierLabel: [UIButton]!
     @IBOutlet weak var clearLabel: UIButton!
-    @IBOutlet weak var settingsOutlet: UIButton!
-    @IBOutlet weak var logOutlet: UIButton!
     
     // Constraint outlets
     @IBOutlet weak var resultLabelConstraint: NSLayoutConstraint!
@@ -206,8 +204,6 @@ class RollViewController: UIViewController, SettingsDelegate {
             addDieLabel[i].layer.cornerRadius = 25
             subtractModifierLabel[i].layer.cornerRadius = 25
             addModifierLabel[i].layer.cornerRadius = 25
-            settingsOutlet.layer.cornerRadius = 25
-            logOutlet.layer.cornerRadius = 25
         }
         
         clearLabel.layer.cornerRadius = 20
@@ -246,8 +242,6 @@ class RollViewController: UIViewController, SettingsDelegate {
         resultLabel.textColor = colorScheme.textColor
         clearLabel.backgroundColor = colorScheme.clearColor
         clearLabel.setTitleColor(colorScheme.textColor, for: .normal)
-        logOutlet.backgroundColor = colorScheme.modifierColor
-        settingsOutlet.backgroundColor = colorScheme.modifierColor
     }
     
     // Set up for SE and 4s
@@ -265,18 +259,10 @@ class RollViewController: UIViewController, SettingsDelegate {
                 addDieLabel[i].layer.cornerRadius = 15
                 subtractModifierLabel[i].layer.cornerRadius = 15
                 addModifierLabel[i].layer.cornerRadius = 15
-                settingsOutlet.layer.cornerRadius = 15
-                logOutlet.layer.cornerRadius = 15
             }
             
             clearLabel.layer.cornerRadius = 10
         }
-    }
-    // Conform to SettingsDelegate
-    func finishPassing(_ colorScheme: ColorPalette) {
-        self.colorScheme = colorScheme
-        print("Passed color scheme to RollView")
-        loadColorScheme()
     }
     
     // Function to load roll log into this view from tab bar
@@ -292,24 +278,6 @@ class RollViewController: UIViewController, SettingsDelegate {
         tabBar.rollLog = []
         tabBar.rollLog.append(contentsOf: rollsToLog)
     }
-    
-    // Function to pass log item to LogViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "LogSegue" {
-//            let logTableViewController = segue.destination as! LogTableViewController
-//            logTableViewController.rollLog = rollsToLog.reversed()
-//            logTableViewController.colorScheme = colorScheme
-//
-//            // Set up settings delegate
-//            let settingsViewController = SettingsViewController()
-//            settingsViewController.delegate = self
-//
-//        } else if segue.identifier == "SettingsSegue" {
-//            let settingsViewController = segue.destination as! SettingsViewController
-//            settingsViewController.chosenColor = colorScheme
-//            settingsViewController.delegate = self
-//        }
-    }
 
     // Stuff to hide the navigation bar
     override func viewWillAppear(_ animated: Bool) {
@@ -320,6 +288,12 @@ class RollViewController: UIViewController, SettingsDelegate {
         
         // Get roll Log
         getRollLog()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let tabBar = tabBarController as! TabViewController
+        colorScheme = tabBar.colorScheme
+        loadColorScheme()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

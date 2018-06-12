@@ -10,13 +10,7 @@
 
 import UIKit
 
-protocol SettingsDelegate {
-    func finishPassing(_ colorScheme: ColorPalette)
-}
-
 class SettingsViewController: UIViewController {
-    // delegate variable
-    var delegate: SettingsDelegate?
     // chosen color to pass in segue
     var chosenColor = ColorPalette()
     
@@ -41,8 +35,8 @@ class SettingsViewController: UIViewController {
         }
         chosenColor = ColorPalette(scheme)
         setupStyle()
-        
-        delegate?.finishPassing(chosenColor)
+        let tabBar = tabBarController as! TabViewController
+        tabBar.colorScheme = chosenColor
     }
     
     // Function to load color scheme for settings

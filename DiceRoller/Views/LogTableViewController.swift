@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LogTableViewController: UITableViewController, SettingsDelegate {
+class LogTableViewController: UITableViewController {
     // Variable to determine if the app was just launched
     var freshLaunch = true
     // Array of logs to hold the appended logs for the tableView
@@ -25,8 +25,12 @@ class LogTableViewController: UITableViewController, SettingsDelegate {
         }
         // Append new log items to rollLog
         let tabBar = tabBarController as! TabViewController
+        // Get rolls from tabBar
         rollLog = []
         rollLog.append(contentsOf: tabBar.rollLog)
+        
+        // Get color scheme from tabBar
+        colorScheme = tabBar.colorScheme
     
         tableView.reloadData()
         setupStyle()
@@ -91,12 +95,6 @@ class LogTableViewController: UITableViewController, SettingsDelegate {
         navigationController?.navigationBar.barTintColor = colorScheme.backGroundColor
         navigationController?.navigationBar.tintColor = colorScheme.textColor
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : colorScheme.textColor]
-    }
-    
-    func finishPassing(_ colorScheme: ColorPalette) {
-        self.colorScheme = colorScheme
-        print("Passed color scheme to log")
-        setupStyle()
     }
 
 //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

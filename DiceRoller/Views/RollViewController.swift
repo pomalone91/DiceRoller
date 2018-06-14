@@ -14,13 +14,13 @@ import UIKit
 
 class RollViewController: UIViewController {
     //  Create the dice
-    var dice = [Die(type: .d4, totalDice: 1 , modifier: 0),
-               Die(type: .d6, totalDice: 1 , modifier: 0),
-               Die(type: .d8, totalDice: 1 , modifier: 0),
-               Die(type: .d10, totalDice: 1 , modifier: 0),
-               Die(type: .d12, totalDice: 1 , modifier: 0),
-               Die(type: .d20, totalDice: 1 , modifier: 0),
-               Die(type: .d100, totalDice: 1 , modifier: 0)]
+    var dice = [Die(sides: 4, totalDice: 1 , modifier: 0),
+                Die(sides: 6, totalDice: 1 , modifier: 0),
+                Die(sides: 8, totalDice: 1 , modifier: 0),
+                Die(sides: 10, totalDice: 1 , modifier: 0),
+                Die(sides: 12, totalDice: 1 , modifier: 0),
+                Die(sides: 20, totalDice: 1 , modifier: 0),
+                Die(sides: 100, totalDice: 1 , modifier: 0)]
     
     // Create the timer
     var timer = Timer()
@@ -58,9 +58,9 @@ class RollViewController: UIViewController {
     // Function to update all of the labels
     func updateLabels(_ senderTag: Int, _ die: Die) {
         if die.modifier < 0 {
-            buttonText[senderTag].setTitle("\(die.totalDice)\(die.type)\(die.modifier)", for: .normal)
+            buttonText[senderTag].setTitle(die.description, for: .normal)
         } else {
-            buttonText[senderTag].setTitle("\(die.totalDice)\(die.type)+\(die.modifier)", for: .normal)
+            buttonText[senderTag].setTitle(die.description, for: .normal)
         }
     }
     
@@ -80,7 +80,7 @@ class RollViewController: UIViewController {
     // Function to remove dice
     func removeDice(senderTag: Int) {
         // Get the die to remove from
-        var dieToRemove = dice[senderTag]
+        let dieToRemove = dice[senderTag]
         dieToRemove.removeDie()
         
         // Update the button label, use sender.tag for the array index
@@ -99,7 +99,7 @@ class RollViewController: UIViewController {
     
     //  Function for adding dice
     func addDice(senderTag: Int) {
-        var dieToAdd = dice[senderTag]
+        let dieToAdd = dice[senderTag]
         
         // Actually remove the die
         dieToAdd.addDie()
@@ -119,7 +119,7 @@ class RollViewController: UIViewController {
     }
     
     func subtractModifier(senderTag: Int) {
-        var modifierToSubtract = dice[senderTag]
+        let modifierToSubtract = dice[senderTag]
         
         // Actually remove the die
         modifierToSubtract.removeModifier()
@@ -138,7 +138,7 @@ class RollViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: {_ in self.addModifier(senderTag: sender.tag)})
     }
     func addModifier(senderTag: Int) {
-        var modifierToAdd = dice[senderTag]
+        let modifierToAdd = dice[senderTag]
         
         // Actually remove the die
         modifierToAdd.addModifier()
@@ -160,15 +160,17 @@ class RollViewController: UIViewController {
         resultLabel.text = "\(resultValue)"
         
         // Update the title on the button
-        if dieToRoll.modifier < 0 {
-            sender.setTitle("\(dieToRoll.totalDice)\(dieToRoll.type)\(dieToRoll.modifier)", for: .normal)
-            let newLogItem = Log(roll: "\(dieToRoll.totalDice)\(dieToRoll.type)\(dieToRoll.modifier)", result: resultValue)
-            rollsToLog.append(newLogItem)
-        } else {
-            sender.setTitle("\(dieToRoll.totalDice)\(dieToRoll.type)+\(dieToRoll.modifier)", for: .normal)
-            let newLogItem = Log(roll: "\(dieToRoll.totalDice)\(dieToRoll.type)+\(dieToRoll.modifier)", result: resultValue)
-            rollsToLog.append(newLogItem)
-        }
+        let newLogItem = Log(roll: dieToRoll.description, result: resultValue)
+        rollsToLog.append(newLogItem)
+//        if dieToRoll.modifier < 0 {
+//            sender.setTitle("\(dieToRoll.totalDice)\(dieToRoll.sides)\(dieToRoll.modifier)", for: .normal)
+//            let newLogItem = Log(roll: "\(dieToRoll.totalDice)\(dieToRoll.sides)\(dieToRoll.modifier)", result: resultValue)
+//            rollsToLog.append(newLogItem)
+//        } else {
+//            sender.setTitle("\(dieToRoll.totalDice)\(dieToRoll.sides)+\(dieToRoll.modifier)", for: .normal)
+//            let newLogItem = Log(roll: "\(dieToRoll.totalDice)\(dieToRoll.sides)+\(dieToRoll.modifier)", result: resultValue)
+//            rollsToLog.append(newLogItem)
+//        }
         
     }
     
@@ -189,7 +191,7 @@ class RollViewController: UIViewController {
         // Loop through each button and reset everything.
         i = 0
         while i < dice.count {
-            buttonText[i].setTitle("\(dice[i].totalDice)\(dice[i].type)+\(dice[i].modifier)", for: .normal)
+            buttonText[i].setTitle("\(dice[i].totalDice)\(dice[i].sides)+\(dice[i].modifier)", for: .normal)
             i += 1
         }
         

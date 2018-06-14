@@ -15,23 +15,38 @@ enum DieType {
 
 /*** Structure defining components of dice, such as the total number of dice to be rolled.
  *** The type of dice to be rolled and the modifier added to the sum of the rolls ***/
-struct Die {
-    var type: DieType = .d4
+class Die: CustomStringConvertible {
+    var sides: Int
     var totalDice: Int = 1
     var modifier: Int = 0
+    var description: String {
+        let roll: String
+        if self.modifier < 0 {
+            roll = "\(self.totalDice)d\(self.sides)\(self.modifier)"
+        } else {
+            roll = "\(self.totalDice)d\(self.sides)+\(self.modifier)"
+        }
+        return roll
+    }
+    
+    init(sides: Int, totalDice: Int, modifier: Int) {
+        self.sides = sides
+        self.totalDice = totalDice
+        self.modifier = modifier
+    }
     
     /*** Add or remove 1 dice when button is tapped
      *** If the number of die exceeds the maximum of 99, it resets to 1
      *** If the total number of die is 1 and one is subtracted, it resets to the max, 99, 
      ***/
-    mutating func addDie() {
+    func addDie() {
         self.totalDice += 1
         print(self.totalDice)
         if totalDice > 99 {
             totalDice = 1
         }
     }
-    mutating func removeDie() {
+    func removeDie() {
         self.totalDice -= 1
         if totalDice < 1 {
             totalDice = 99
@@ -40,14 +55,14 @@ struct Die {
     }
     
     //  Add or subtract 1 from the modifier value to the roll
-    mutating func addModifier() {
+    func addModifier() {
         self.modifier += 1
         if modifier > 99 {
             self.modifier = -99
         }
         print("modifier is: \(self.modifier)")
     }
-    mutating func removeModifier() {
+    func removeModifier() {
         self.modifier -= 1
         if modifier < -99 {
             self.modifier = 99
@@ -56,7 +71,7 @@ struct Die {
     }
     
     // Function to reset modifiers and total dice
-    mutating func resetDie() {
+    func resetDie() {
         self.modifier = 0
         self.totalDice = 1
     }
@@ -64,31 +79,13 @@ struct Die {
     
     //  Function to handle rolling the dice
     func rollDie() -> Int {
-        let upperBound: UInt32
-        switch type {
-        case .d4:
-            upperBound = 4
-        case .d6:
-            upperBound = 6
-        case .d8:
-            upperBound = 8
-        case .d10:
-            upperBound = 10
-        case .d12:
-            upperBound = 12
-        case .d20:
-            upperBound = 20
-        case .d100:
-            upperBound = 100
-        }
-        
-        print("Rolled \(totalDice)\(type) + \(modifier)")
+        print("Rolled \(description)")
         
         //  Use upperBound determined from switch statement to set the max possible value created using arc4random_uniform()
         var rollValue = UInt32()
         var i = totalDice
         while i > 0 {
-            rollValue += arc4random_uniform(upperBound)
+            rollValue += arc4random_uniform(UInt32(sides))
             i -= 1
         }
         return Int((rollValue)) + 1 + modifier

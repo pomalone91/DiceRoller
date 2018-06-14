@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2520D1A620D1F9070037DC07 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2520D1A520D1F9070037DC07 /* GroupsViewController.swift */; };
+		2520D1A820D1FB1A0037DC07 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2520D1A720D1FB1A0037DC07 /* GroupTableViewController.swift */; };
+		2520D1AC20D1FB640037DC07 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2520D1AB20D1FB640037DC07 /* GroupTableViewCell.swift */; };
 		25243F2E1F3EA1FB00DD5E29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243F2D1F3EA1FB00DD5E29 /* AppDelegate.swift */; };
 		25243F301F3EA1FB00DD5E29 /* RollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243F2F1F3EA1FB00DD5E29 /* RollViewController.swift */; };
 		25243F331F3EA1FB00DD5E29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25243F311F3EA1FB00DD5E29 /* Main.storyboard */; };
@@ -14,14 +17,18 @@
 		25243F381F3EA1FB00DD5E29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25243F361F3EA1FB00DD5E29 /* LaunchScreen.storyboard */; };
 		2528147720C864D200C993AB /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2528147620C864D200C993AB /* TabViewController.swift */; };
 		25852E321FB3D18A000C1EE7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */; };
+		25968F2B20D210B400A184C9 /* RollGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25968F2A20D210B400A184C9 /* RollGroup.swift */; };
 		25A01FFB1FC4BBFB007121D0 /* SettingsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A01FFA1FC4BBFB007121D0 /* SettingsStructure.swift */; };
 		25AF597520015ECE00AD920C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF597420015ECE00AD920C /* Log.swift */; };
 		25AF597720015FA800AD920C /* LogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF597620015FA800AD920C /* LogTableViewController.swift */; };
 		25AF597920015FF600AD920C /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF597820015FF600AD920C /* LogTableViewCell.swift */; };
-		25BD564A1F3FA77700D63EF4 /* DieStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BD56491F3FA77700D63EF4 /* DieStructure.swift */; };
+		25BD564A1F3FA77700D63EF4 /* Die.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BD56491F3FA77700D63EF4 /* Die.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2520D1A520D1F9070037DC07 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		2520D1A720D1FB1A0037DC07 /* GroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		2520D1AB20D1FB640037DC07 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		25243F2A1F3EA1FB00DD5E29 /* DiceRoller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiceRoller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25243F2D1F3EA1FB00DD5E29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25243F2F1F3EA1FB00DD5E29 /* RollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollViewController.swift; sourceTree = "<group>"; };
@@ -31,11 +38,12 @@
 		25243F391F3EA1FB00DD5E29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2528147620C864D200C993AB /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		25968F2A20D210B400A184C9 /* RollGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollGroup.swift; sourceTree = "<group>"; };
 		25A01FFA1FC4BBFB007121D0 /* SettingsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStructure.swift; sourceTree = "<group>"; };
 		25AF597420015ECE00AD920C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = DiceRoller/Model/Log.swift; sourceTree = SOURCE_ROOT; };
 		25AF597620015FA800AD920C /* LogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewController.swift; sourceTree = "<group>"; };
 		25AF597820015FF600AD920C /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
-		25BD56491F3FA77700D63EF4 /* DieStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DieStructure.swift; sourceTree = "<group>"; };
+		25BD56491F3FA77700D63EF4 /* Die.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Die.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2520D1A920D1FB280037DC07 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				2520D1A520D1F9070037DC07 /* GroupsViewController.swift */,
+				2520D1A720D1FB1A0037DC07 /* GroupTableViewController.swift */,
+				2520D1AB20D1FB640037DC07 /* GroupTableViewCell.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		2520D1AA20D1FB300037DC07 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				25AF597820015FF600AD920C /* LogTableViewCell.swift */,
+				25AF597620015FA800AD920C /* LogTableViewController.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
 		25243F211F3EA1FA00DD5E29 = {
 			isa = PBXGroup;
 			children = (
@@ -82,9 +109,11 @@
 		2526824A1FCA0455006B319B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				25968F2A20D210B400A184C9 /* RollGroup.swift */,
+				2528147620C864D200C993AB /* TabViewController.swift */,
 				25AF597420015ECE00AD920C /* Log.swift */,
 				25A01FFA1FC4BBFB007121D0 /* SettingsStructure.swift */,
-				25BD56491F3FA77700D63EF4 /* DieStructure.swift */,
+				25BD56491F3FA77700D63EF4 /* Die.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,9 +121,8 @@
 		2526824B1FCA045E006B319B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2528147620C864D200C993AB /* TabViewController.swift */,
-				25AF597820015FF600AD920C /* LogTableViewCell.swift */,
-				25AF597620015FA800AD920C /* LogTableViewController.swift */,
+				2520D1AA20D1FB300037DC07 /* Log */,
+				2520D1A920D1FB280037DC07 /* Groups */,
 				25243F2F1F3EA1FB00DD5E29 /* RollViewController.swift */,
 				25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */,
 			);
@@ -178,12 +206,16 @@
 				25AF597920015FF600AD920C /* LogTableViewCell.swift in Sources */,
 				2528147720C864D200C993AB /* TabViewController.swift in Sources */,
 				25AF597720015FA800AD920C /* LogTableViewController.swift in Sources */,
+				2520D1AC20D1FB640037DC07 /* GroupTableViewCell.swift in Sources */,
 				25A01FFB1FC4BBFB007121D0 /* SettingsStructure.swift in Sources */,
+				2520D1A620D1F9070037DC07 /* GroupsViewController.swift in Sources */,
 				25AF597520015ECE00AD920C /* Log.swift in Sources */,
 				25243F301F3EA1FB00DD5E29 /* RollViewController.swift in Sources */,
 				25243F2E1F3EA1FB00DD5E29 /* AppDelegate.swift in Sources */,
-				25BD564A1F3FA77700D63EF4 /* DieStructure.swift in Sources */,
+				25BD564A1F3FA77700D63EF4 /* Die.swift in Sources */,
 				25852E321FB3D18A000C1EE7 /* SettingsViewController.swift in Sources */,
+				2520D1A820D1FB1A0037DC07 /* GroupTableViewController.swift in Sources */,
+				25968F2B20D210B400A184C9 /* RollGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

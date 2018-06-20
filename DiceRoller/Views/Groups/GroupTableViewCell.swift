@@ -11,10 +11,13 @@ import UIKit
 class GroupTableViewCell: UITableViewCell {
 
     @IBOutlet weak var groupNameLabel: UILabel!
-    @IBOutlet weak var resultLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func update(with group: RollGroup) {
+        groupNameLabel.text = group.groupName
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -22,5 +25,4 @@ class GroupTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

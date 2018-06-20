@@ -7,3 +7,28 @@
 //
 
 import Foundation
+
+class RollGroup {
+    var groupName: String
+    var rolls: [Die]
+    
+    // Initialize with empty rolls
+    init(_ groupName: String) {
+        self.groupName = groupName
+        self.rolls = []
+    }
+    
+    // Initialize with given array of rolls
+    init(_ groupName: String, rolls: [Die]) {
+        self.groupName = groupName
+        self.rolls = rolls
+    }
+    
+    func addDie(with sides: Int, totalDice: Int, modifier: Int) {
+        rolls.append(Die(sides: sides, totalDice: totalDice, modifier: modifier))
+    }
+    
+    func removeDieWhere(_ indexPath: Int) {
+        rolls.remove(at: indexPath)
+    }
+}

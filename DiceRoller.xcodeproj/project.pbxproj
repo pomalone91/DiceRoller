@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2520D1A620D1F9070037DC07 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2520D1A520D1F9070037DC07 /* GroupsViewController.swift */; };
-		2520D1A820D1FB1A0037DC07 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2520D1A720D1FB1A0037DC07 /* GroupTableViewController.swift */; };
 		2520D1AC20D1FB640037DC07 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2520D1AB20D1FB640037DC07 /* GroupTableViewCell.swift */; };
 		25243F2E1F3EA1FB00DD5E29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243F2D1F3EA1FB00DD5E29 /* AppDelegate.swift */; };
 		25243F301F3EA1FB00DD5E29 /* RollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25243F2F1F3EA1FB00DD5E29 /* RollViewController.swift */; };
@@ -27,7 +26,6 @@
 
 /* Begin PBXFileReference section */
 		2520D1A520D1F9070037DC07 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
-		2520D1A720D1FB1A0037DC07 /* GroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		2520D1AB20D1FB640037DC07 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		25243F2A1F3EA1FB00DD5E29 /* DiceRoller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiceRoller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25243F2D1F3EA1FB00DD5E29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				2520D1A520D1F9070037DC07 /* GroupsViewController.swift */,
-				2520D1A720D1FB1A0037DC07 /* GroupTableViewController.swift */,
 				2520D1AB20D1FB640037DC07 /* GroupTableViewCell.swift */,
 			);
 			path = Groups;
@@ -214,7 +211,6 @@
 				25243F2E1F3EA1FB00DD5E29 /* AppDelegate.swift in Sources */,
 				25BD564A1F3FA77700D63EF4 /* Die.swift in Sources */,
 				25852E321FB3D18A000C1EE7 /* SettingsViewController.swift in Sources */,
-				2520D1A820D1FB1A0037DC07 /* GroupTableViewController.swift in Sources */,
 				25968F2B20D210B400A184C9 /* RollGroup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

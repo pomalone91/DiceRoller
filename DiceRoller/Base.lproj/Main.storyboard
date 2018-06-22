@@ -113,52 +113,6 @@
             </objects>
             <point key="canvasLocation" x="1857" y="-1255"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="8W1-zU-wMc">
-            <objects>
-                <tableViewController id="tyy-k2-JNe" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mBA-St-Z73">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections>
-                            <tableViewSection headerTitle="Group Name" id="UtB-d6-hAn">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Nbe-gn-MGL">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nbe-gn-MGL" id="tYj-f8-MdV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of this group..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="746-6V-Aq2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="746-6V-Aq2" firstAttribute="top" secondItem="tYj-f8-MdV" secondAttribute="top" id="8DN-KY-9K0"/>
-                                                <constraint firstAttribute="bottom" secondItem="746-6V-Aq2" secondAttribute="bottom" id="OO2-Ay-otG"/>
-                                                <constraint firstItem="746-6V-Aq2" firstAttribute="leading" secondItem="tYj-f8-MdV" secondAttribute="leading" id="k0L-Kt-z8O"/>
-                                                <constraint firstAttribute="trailing" secondItem="746-6V-Aq2" secondAttribute="trailing" id="zvP-vu-7Y9"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="tyy-k2-JNe" id="syU-BP-5RU"/>
-                            <outlet property="delegate" destination="tyy-k2-JNe" id="5TP-Ye-x3F"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZUU-f8-uNr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3679" y="-1929"/>
-        </scene>
         <!--Groups View Controller-->
         <scene sceneID="VYX-2E-G4N">
             <objects>
@@ -233,7 +187,6 @@
                                         <state key="normal" title="Add Group"/>
                                         <connections>
                                             <action selector="addGroupTapped:" destination="kK2-AG-eQz" eventType="touchUpInside" id="JV8-EY-XIA"/>
-                                            <segue destination="tyy-k2-JNe" kind="presentation" id="gHC-gA-MnM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -270,7 +223,19 @@
                     <view key="view" contentMode="scaleToFill" id="fDD-lR-eip">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vWC-Ae-bLl">
+                                <rect key="frame" x="16" y="88" width="343" height="641"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vWC-Ae-bLl" secondAttribute="trailing" id="30G-fX-GDP"/>
+                            <constraint firstItem="Th0-Pn-wLM" firstAttribute="top" secondItem="vWC-Ae-bLl" secondAttribute="bottom" id="9do-X5-akP"/>
+                            <constraint firstItem="vWC-Ae-bLl" firstAttribute="leading" secondItem="fDD-lR-eip" secondAttribute="leadingMargin" id="a9d-SK-52y"/>
+                            <constraint firstItem="vWC-Ae-bLl" firstAttribute="top" secondItem="Jgs-bN-jAm" secondAttribute="bottom" id="s6Y-yv-taW"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5oi-km-ydS" userLabel="First Responder" sceneMemberID="firstResponder"/>

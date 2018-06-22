@@ -29,15 +29,19 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         
         newGroupAlert.addTextField(configurationHandler: {UITextField in UITextField.placeholder = "Enter Group Name..."})
         let createAction = UIAlertAction(title: "Create", style: .default) { (alertAction) in
-            // TODO - handle the optionals in this better
-            self.rollGroups.append(RollGroup(newGroupAlert.textFields![0].text!))
+            // Get the textfields from newGroupAlert, check if that textfield has anything in it, then append it and reload table data if it does.
+            guard let alertTextFields = newGroupAlert.textFields else { newGroupAlert.dismiss(animated: true, completion: nil); return }
+            guard let rollGroupName = alertTextFields[0].text else { newGroupAlert.dismiss(animated: true, completion: nil);return }
+            if rollGroupName == "" {
+                newGroupAlert.dismiss(animated: true, completion: nil)
+            } else {
+                self.rollGroups.append(RollGroup(rollGroupName))
+            }
             self.tableView.reloadData()
         }
         newGroupAlert.addAction(cancelAction)
         newGroupAlert.addAction(createAction)
         self.present(newGroupAlert, animated: true, completion: nil)
-        // Use that string to create a RollGroup object
-        // Append that RollGroup object to rollGroups
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

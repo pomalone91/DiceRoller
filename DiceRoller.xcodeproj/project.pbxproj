@@ -15,8 +15,11 @@
 		25243F351F3EA1FB00DD5E29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25243F341F3EA1FB00DD5E29 /* Assets.xcassets */; };
 		25243F381F3EA1FB00DD5E29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25243F361F3EA1FB00DD5E29 /* LaunchScreen.storyboard */; };
 		2528147720C864D200C993AB /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2528147620C864D200C993AB /* TabViewController.swift */; };
+		25466AC720DD7D7E0022413C /* CustomDieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25466AC620DD7D7E0022413C /* CustomDieViewController.swift */; };
+		25466AC920DD7D900022413C /* CustomDieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25466AC820DD7D900022413C /* CustomDieTableViewCell.swift */; };
 		25852E321FB3D18A000C1EE7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */; };
 		25968F2B20D210B400A184C9 /* RollGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25968F2A20D210B400A184C9 /* RollGroup.swift */; };
+		259F2A5020E72E7100E6CAAB /* AddDieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259F2A4F20E72E7100E6CAAB /* AddDieTableViewController.swift */; };
 		25A01FFB1FC4BBFB007121D0 /* SettingsStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A01FFA1FC4BBFB007121D0 /* SettingsStructure.swift */; };
 		25AF597520015ECE00AD920C /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF597420015ECE00AD920C /* Log.swift */; };
 		25AF597720015FA800AD920C /* LogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AF597620015FA800AD920C /* LogTableViewController.swift */; };
@@ -35,8 +38,11 @@
 		25243F371F3EA1FB00DD5E29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25243F391F3EA1FB00DD5E29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2528147620C864D200C993AB /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		25466AC620DD7D7E0022413C /* CustomDieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDieViewController.swift; sourceTree = "<group>"; };
+		25466AC820DD7D900022413C /* CustomDieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDieTableViewCell.swift; sourceTree = "<group>"; };
 		25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		25968F2A20D210B400A184C9 /* RollGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollGroup.swift; sourceTree = "<group>"; };
+		259F2A4F20E72E7100E6CAAB /* AddDieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDieTableViewController.swift; sourceTree = "<group>"; };
 		25A01FFA1FC4BBFB007121D0 /* SettingsStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStructure.swift; sourceTree = "<group>"; };
 		25AF597420015ECE00AD920C /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Log.swift; path = DiceRoller/Model/Log.swift; sourceTree = SOURCE_ROOT; };
 		25AF597620015FA800AD920C /* LogTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewController.swift; sourceTree = "<group>"; };
@@ -118,12 +124,23 @@
 		2526824B1FCA045E006B319B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				25466AC520DD7D4C0022413C /* Custom Die */,
 				2520D1AA20D1FB300037DC07 /* Log */,
 				2520D1A920D1FB280037DC07 /* Groups */,
 				25243F2F1F3EA1FB00DD5E29 /* RollViewController.swift */,
 				25852E311FB3D18A000C1EE7 /* SettingsViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		25466AC520DD7D4C0022413C /* Custom Die */ = {
+			isa = PBXGroup;
+			children = (
+				25466AC620DD7D7E0022413C /* CustomDieViewController.swift */,
+				25466AC820DD7D900022413C /* CustomDieTableViewCell.swift */,
+				259F2A4F20E72E7100E6CAAB /* AddDieTableViewController.swift */,
+			);
+			path = "Custom Die";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,9 +222,12 @@
 				25AF597720015FA800AD920C /* LogTableViewController.swift in Sources */,
 				2520D1AC20D1FB640037DC07 /* GroupTableViewCell.swift in Sources */,
 				25A01FFB1FC4BBFB007121D0 /* SettingsStructure.swift in Sources */,
+				259F2A5020E72E7100E6CAAB /* AddDieTableViewController.swift in Sources */,
+				25466AC920DD7D900022413C /* CustomDieTableViewCell.swift in Sources */,
 				2520D1A620D1F9070037DC07 /* GroupsViewController.swift in Sources */,
 				25AF597520015ECE00AD920C /* Log.swift in Sources */,
 				25243F301F3EA1FB00DD5E29 /* RollViewController.swift in Sources */,
+				25466AC720DD7D7E0022413C /* CustomDieViewController.swift in Sources */,
 				25243F2E1F3EA1FB00DD5E29 /* AppDelegate.swift in Sources */,
 				25BD564A1F3FA77700D63EF4 /* Die.swift in Sources */,
 				25852E321FB3D18A000C1EE7 /* SettingsViewController.swift in Sources */,

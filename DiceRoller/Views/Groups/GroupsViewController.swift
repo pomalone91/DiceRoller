@@ -10,10 +10,14 @@ import UIKit
 
 class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var rollGroups: [RollGroup] = [RollGroup("Goblin"), RollGroup("Ghoul")]
-
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        rollGroups[0].addDie(with: 5, totalDice: 2, modifier: 1, name: "claws")
+        rollGroups[0].addDie(with: 8, totalDice: 1, modifier: -5, name: "teeth")
+        rollGroups[1].addDie(with: 4, totalDice: 100, modifier: 0, name: "sword")
+        rollGroups[1].addDie(with: 6, totalDice: 10, modifier: 500, name: "spell")
 
         // Do any additional setup after loading the view.
     }
@@ -64,7 +68,15 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         //
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GroupSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let rollGroup = rollGroups[indexPath.row]
+                let customDieController = segue.destination as! CustomDieViewController
+                customDieController.rollGroup = rollGroup
+            }
+        }
+    }
 
     /*
     // MARK: - Navigation

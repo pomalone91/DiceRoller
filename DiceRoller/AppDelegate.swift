@@ -6,6 +6,10 @@
 //  Copyright © 2017 stroggi. All rights reserved.
 //
 
+// Things to do still
+//      Divide the dice in each group into sections in the tableview and display the name of the roll as that section header
+//      Save roll groups to a file
+//      Read from file to load rolls on launch
 import UIKit
 
 @UIApplicationMain

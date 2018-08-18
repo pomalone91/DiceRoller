@@ -19,20 +19,38 @@ class Die: CustomStringConvertible {
     var sides: Int
     var totalDice: Int = 1
     var modifier: Int = 0
+    var name: String?
     var description: String {
         let roll: String
-        if self.modifier < 0 {
-            roll = "\(self.totalDice)d\(self.sides)\(self.modifier)"
+        if let name = self.name {
+            if self.modifier < 0 {
+                roll = "\(name): \(self.totalDice)d\(self.sides)\(self.modifier)"
+            } else {
+                roll = "\(name): \(self.totalDice)d\(self.sides)+\(self.modifier)"
+            }
         } else {
-            roll = "\(self.totalDice)d\(self.sides)+\(self.modifier)"
+            if self.modifier < 0 {
+                roll = "\(self.totalDice)d\(self.sides)\(self.modifier)"
+            } else {
+                roll = "\(self.totalDice)d\(self.sides)+\(self.modifier)"
+            }
         }
         return roll
     }
     
+    // init without name
     init(sides: Int, totalDice: Int, modifier: Int) {
         self.sides = sides
         self.totalDice = totalDice
         self.modifier = modifier
+    }
+    
+    // init with name
+    init(sides: Int, totalDice: Int, modifier: Int, name: String) {
+        self.sides = sides
+        self.totalDice = totalDice
+        self.modifier = modifier
+        self.name = name
     }
     
     /*** Add or remove 1 dice when button is tapped

@@ -13,6 +13,8 @@ class TabViewController: UITabBarController {
     // Variables to pass between the views
     var colorScheme = ColorPalette()
     var rollLog: [Log] = []
+    var rollGroup: [RollGroup] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -24,8 +24,8 @@ class RollGroup {
         self.rolls = rolls
     }
     
-    func addDie(with sides: Int, totalDice: Int, modifier: Int) {
-        rolls.append(Die(sides: sides, totalDice: totalDice, modifier: modifier))
+    func addDie(with sides: Int, totalDice: Int, modifier: Int, name: String) {
+        rolls.append(Die(sides: sides, totalDice: totalDice, modifier: modifier, name: name))
     }
     
     func removeDieWhere(_ indexPath: Int) {
